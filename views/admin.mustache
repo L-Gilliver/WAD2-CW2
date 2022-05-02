@@ -1,0 +1,93 @@
+<html>
+    <header>
+        {{>head}}
+    </header>
+    <body>
+    <main>
+        <section class="actionBox">
+            <h3>ADD NEW MENU ITEM</h3>
+            <form>
+                <label for="newDishName">NAME</label>
+                <input type="text" id="newDishName" name="newDishName"><br>
+                <label for="newDishDesc">DESCRIPTION</label>
+                <input type="text" id="newDishDesc" name="newDishDesc"><br>
+                <label for="newDishIngr">INGREDIENTS</label>
+                <input type="text" id="newDishIngr" name="newDishIngr"><br>
+                <button type="button" id="newDishIngrAdd" name="newDishIngrAdd">ADD</button><br>
+                <label for="newDishAllergens">ALLERGENS</label>
+                <select name="newDishAllergens" id="newDishAllergens">
+                    <option value="Dairy">Dairy</option>
+                    <option value="Gluten">Gluten</option>
+                    <option value="Fish">Shellfish</option>
+                    <option value="Shellfsh">Shellfish</option>
+                    <option value="Soy">Shellfish</option>
+                    <option value="Eggs">Shellfish</option>
+                    <option value="Peanuts">Shellfish</option>
+                    <option value="Peanuts">Tree Nuts</option>
+                </select>
+                <button type="button" id="newDishAllergenAdd" name="newDishAllergenAdd">ADD</button><br>
+                <label for="newDishPrice">PRICE</label>
+                <div id="price-section">
+                    <p>£</p>
+                    <select id="newDishPrice1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                    <p>.</p>
+                    <select id="newDishPrice2">
+                        <option value="00">00</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+                <label for="newDishMenu">ASSIGN MENU</label>
+                <select id="newDishMenu">
+                    <option>Dinner</option>
+                    <option>Lunch</option>
+                    <option>Regional</option>
+                </select>
+                <label for="newDishCourse">ASSIGN COURSE</label>
+                <select id="newDishCourse">
+                    <option>Starter</option>
+                    <option>Dinner</option>
+                    <option>Dessert</option>
+                </select>
+                <label for="newDishSpecials">CHEF SPECIAL</label>
+                <input type="checkbox" id="newDishSpecials" name="newDishSpecials" value="true">
+                <label for="newDishActive">ACTIVE</label>
+                <input type="checkbox" id="newDishActive" name="newDishActive" value="true">
+            </form>
+        </section>
+        <section>
+            <h3>UPDATE CURRENT MENUS</h3>
+            <div>
+                {{#active}}
+                    <h6>Menu</h6>
+                {{/active}}
+            </div>
+            <div>
+            <button>REMOVE</button>
+            <input type="text" placeholder="Search Dishes..">
+            <button>ADD</button>
+            </div>
+        </section>
+    </main>
+    </body>
+</html>
