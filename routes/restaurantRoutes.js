@@ -8,9 +8,7 @@ router.get('/', function(req, res) {
     res.redirect('/about.html');
 })
 router.get('/lunch-menu', controller.activeLunchMenu);   //show_lunch_menu);
-//router.get('/lunch-menu', controller.active_lunch_specials_entries);
 router.get('/dinner-menu', controller.activeDinnerMenu);  //show_dinner_menu);
-//router.get('/dinner-menu', controller.active_dinner_specials_entries);
 router.get('/regional-menu', controller.activeRegionalMenu);   //show_regional_menu);
 //router.get('/login', controller.show_login_page);
 //router.post('/login', login, controller.handle_login);

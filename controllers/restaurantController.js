@@ -5,6 +5,89 @@ const { login } = require('../auth/auth')
 const db = new menusDAO();
 db.init();
 
+/* menusDAO.where not a function
+  menusDAO.find not a function
+//Gets lunch menu items by course and special status
+exports.activeLunchMenu = async function (req, res, next) {
+  const specStarter = await menusDAO.where({ menu: 'lunch', course: 'starter', chefSpecial: 'true', active: 'true' }).select("");
+  const specMain = await menusDAO.where({ menu: 'lunch', course: 'main', chefSpecial: 'true', active: 'true' }).select("");
+  const starters = await menusDAO.where({ menu: 'lunch', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
+  const mains = await menusDAO.where({ menu: 'lunch', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
+  const desserts = await menusDAO.where({ menu: 'lunch', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
+  res.render("lunchMenu", { specStarter, specMain, starters, mains, desserts });
+}
+//Gets landing page with added elements
+exports.activeDinnerMenu = async function (req, res, next) {
+  const specStarter = await menusDAO.where({ menu: 'dinner', course: 'starter', chefSpecial: 'true', active: 'true' }).select("");
+  const specMain = await menusDAO.where({ menu: 'dinner', course: 'main', chefSpecial: 'true', active: 'true' }).select("");
+  const starters = await menusDAO.where({ menu: 'dinner', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
+  const mains = await menusDAO.where({ menu: 'dinner', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
+  const desserts = await menusDAO.where({ menu: 'dinner', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
+  res.render("dinnerMenu", { specStarter, specMain, starters, mains, desserts });
+}
+//Gets landing page with added elements
+exports.activeRegionalMenu = async function (req, res, next) {
+  //const _email = res.locals.user.email;
+  const starters = await menusDAO.where({ menu: 'regional', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
+  const mains = await menusDAO.where({ menu: 'regional', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
+  const desserts = await menusDAO.where({ menu: 'regional', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
+  res.render("lunchMenu", { specStarter, specMain, starters, mains, desserts });
+}
+*/
+
+// loop through array?
+exports.activeLunchMenu = function (req, res) {
+  db.getActiveLunchItems()
+    .then((list) => {
+      res.render("menu", {
+        title: "Lunch Menu",
+        specialsStarter: list,
+        specialsMain: list,
+        starters: list,
+        mains: list,
+        desserts: list,
+      });
+    })
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
+}
+exports.activeDinnerMenu = function (req, res) {
+  db.getActiveDinnerItems()
+    .then((list) => {
+      res.render("menu", {
+        title: "Dinner Menu",
+        specialsStarter: list,
+        specialsMain: list,
+        starters: list,
+        mains: list,
+        desserts: list,
+      });
+    })
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
+}
+exports.activeRegionalMenu = function (req, res) {
+  db.getActiveRegionalItems()
+    .then((list) => {
+      res.render("regionalMenu", {
+        title: "Regional Menu",
+        starters: list,
+        mains: list,
+        desserts: list,
+      });
+    })
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
+}
+
+
+
+
+
+/*
 exports.activeLunchMenu = function (req, res) {
   db.getActiveLunchSpecialStarters()
     .then((list) => {

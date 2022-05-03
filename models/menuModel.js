@@ -37,72 +37,72 @@ class Menus {
         console.log('db entry dish added to menu');
     }
 
-  
-    //LUNCH MENU
-    getActiveLunchSpecialStarters() {
-        return new Promise((resolve, reject) => {
+
+    getActiveLunchItems() {
+        const specStart = new Promise((resolve, reject) => {
             this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'true', active: 'true' }, function (err, activeLunchSpecialStarters) {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(activeLunchSpecialStarters);
-                    console.log('getActiveLunchSpecialStarters() returns: ', activeLunchSpecialStarters);
+                    console.log('getActiveLunchItems() returns: ', activeLunchSpecialStarters);
                 }
             })
         })
-    }
-    getActiveLunchSpecialMains() {
-        return new Promise((resolve, reject) => {
-            this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'true', active: 'true' }, function (err, activeLunchSpecialMains) {
+        const specMain = new Promise((resolve, reject) => {
+            this.db.find({ menu: 'lunch', course: 'main', chefSpecial: 'true', active: 'true' }, function (err, activeLunchSpecialMains) {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(activeLunchSpecialMains);
-                    console.log('getActiveLunchSpecialMains() returns: ', activeLunchSpecialMains);
+                    console.log('getActiveLunchItems() returns: ', activeLunchSpecialMains);
                 }
             })
         })
-    }
-    getActiveLunchStarters() {
-        return new Promise((resolve, reject) => {
+        const starter = new Promise((resolve, reject) => {
             this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'false', active: 'true' }, function (err, activeLunchStarters) {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(activeLunchStarters);
-                    console.log('getActiveLunchStarters() returns: ', activeLunchStarters);
+                    console.log('getActiveLunchItems() returns: ', activeLunchStarters);
                 }
             })
         })
-    }
-    getActiveLunchMains() {
-        return new Promise((resolve, reject) => {
+        const main = new Promise((resolve, reject) => {
             this.db.find({ menu: 'lunch', course: 'main', chefSpecial: 'false', active: 'true' }, function (err, activeLunchMains) {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(activeLunchMains);
-                    console.log('getActiveLunchMains() returns: ', activeLunchMains);
+                    console.log('getActiveLunchItems() returns: ', activeLunchMains);
                 }
             })
         })
-    }
-    getActiveLunchDesserts() {
-        return new Promise((resolve, reject) => {
+        const dessert = new Promise((resolve, reject) => {
             this.db.find({ menu: 'lunch', course: 'dessert', chefSpecial: 'false', active: 'true' }, function (err, activeLunchDesserts) {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(activeLunchDesserts);
-                    console.log('getActiveLunchDesserts() returns: ', activeLunchDesserts);
+                    console.log('getActiveLunchItems() returns: ', activeLunchDesserts);
                 }
             })
         })
-    }
 
-    //DINNER MENU
-    getActiveDinnerSpecialStarters() {
-        return new Promise((resolve, reject) => {
+        return Promise.all([
+            specStart,
+            specMain,
+            starter,
+            main,
+            dessert
+        ]).then((dishes) => {
+            console.log('getActiveLunchItems() returns: ', dishes);
+        })
+        .catch((err) => console.log(err));
+    }
+    getActiveDinnerItems() {
+        const specStart = new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'starter', chefSpecial: 'true', active: 'true' }, function (err, activeDinnerSpecialStarters) {
                 if (err) {
                     reject(err);
@@ -112,9 +112,7 @@ class Menus {
                 }
             })
         })
-    }
-    getActiveDinnerSpecialMains() {
-        return new Promise((resolve, reject) => {
+        const specMain = new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'true', active: 'true' }, function (err, activeDinnerSpecialMains) {
                 if (err) {
                     reject(err);
@@ -124,9 +122,7 @@ class Menus {
                 }
             })
         })
-    }
-    getActiveDinnerStarters() {
-        return new Promise((resolve, reject) => {
+        const starter = new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'starter', chefSpecial: 'false', active: 'true' }, function (err, activeDinnerStarters) {
                 if (err) {
                     reject(err);
@@ -136,9 +132,7 @@ class Menus {
                 }
             })
         })
-    }
-    getActiveDinnerMains() {
-        return new Promise((resolve, reject) => {
+        const main = new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'false', active: 'true' }, function (err, activeDinnerMains) {
                 if (err) {
                     reject(err);
@@ -148,9 +142,7 @@ class Menus {
                 }
             })
         })
-    }
-    getActiveDinnerDesserts() {
-        return new Promise((resolve, reject) => {
+        const dessert = new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'dessert', chefSpecial: 'false', active: 'true' }, function (err, activeDinnerDesserts) {
                 if (err) {
                     reject(err);
@@ -160,11 +152,20 @@ class Menus {
                 }
             })
         })
-    }
 
-    //REGIONAL MENU
-    getActiveRegionalStarters() {
-        return new Promise((resolve, reject) => {
+        return Promise.all([
+            specStart,
+            specMain,
+            starter,
+            main,
+            dessert
+        ]).then((dishes) => {
+            console.log('getActiveDinnerItems() returns: ', dishes);
+        })
+        .catch((err) => console.log(err));
+    }
+    getActiveRegionalItems() {
+        const starter = new Promise((resolve, reject) => {
             this.db.find({ menu: 'regional', course: 'starter', chefSpecial: 'false', active: 'true' }, function (err, activeRegionalStarters) {
                 if (err) {
                     reject(err);
@@ -174,9 +175,7 @@ class Menus {
                 }
             })
         })
-    }
-    getActiveRegionalMains() {
-        return new Promise((resolve, reject) => {
+        const main = new Promise((resolve, reject) => {
             this.db.find({ menu: 'regional', course: 'main', chefSpecial: 'false', active: 'true' }, function (err, activeRegionalMains) {
                 if (err) {
                     reject(err);
@@ -186,9 +185,7 @@ class Menus {
                 }
             })
         })
-    }
-    getActiveRegionalDesserts() {
-        return new Promise((resolve, reject) => {
+        const dessert = new Promise((resolve, reject) => {
             this.db.find({ menu: 'regional', course: 'dessert', chefSpecial: 'false', active: 'true' }, function (err, activeRegionalDesserts) {
                 if (err) {
                     reject(err);
@@ -198,7 +195,67 @@ class Menus {
                 }
             })
         })
+
+        return Promise.all([
+            starter,
+            main,
+            dessert
+        ]).then((dishes) => {
+            console.log('getActiveRegionalItems() returns: ', dishes);
+        })
+        .catch((err) => console.log(err));
     }
+
+    //LUNCH MENU
+    /*
+    getActiveLunchItems() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'true', active: 'true' }, function (err, activeLunchSpecialStarters) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(activeLunchSpecialStarters);
+                    console.log('getActiveLunchSpecialStarters() returns: ', activeLunchSpecialStarters);
+                }
+            })
+            this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'true', active: 'true' }, function (err, activeLunchSpecialMains) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(activeLunchSpecialMains);
+                    console.log('getActiveLunchSpecialMains() returns: ', activeLunchSpecialMains);
+                }
+            })
+            this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'false', active: 'true' }, function (err, activeLunchStarters) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(activeLunchStarters);
+                    console.log('getActiveLunchStarters() returns: ', activeLunchStarters);
+                }
+            })
+            this.db.find({ menu: 'lunch', course: 'main', chefSpecial: 'false', active: 'true' }, function (err, activeLunchMains) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(activeLunchMains);
+                    console.log('getActiveLunchMains() returns: ', activeLunchMains);
+                }
+            })
+            this.db.find({ menu: 'lunch', course: 'dessert', chefSpecial: 'false', active: 'true' }, function (err, activeLunchDesserts) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(activeLunchDesserts);
+                    console.log('getActiveLunchDesserts() returns: ', activeLunchDesserts);
+                }
+            })
+        })
+    }*/
+
+    
+/*
+
 
 
     //ADMIN INTERACTIONS
@@ -222,6 +279,6 @@ class Menus {
                 console.log('document inserted into the database', doc);
             }
         })
-    }
+    }*/
 }
 module.exports = Menus;
