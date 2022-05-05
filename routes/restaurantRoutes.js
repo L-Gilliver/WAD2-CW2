@@ -1,7 +1,8 @@
+const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/restaurantController.js');
-//const {login} = require('../auth/auth')
+const {login} = require('../auth/auth')
 
 //router.get("/", controller.landing_page);
 router.get('/', function(req, res) {
@@ -10,8 +11,8 @@ router.get('/', function(req, res) {
 router.get('/lunch-menu', controller.activeLunchMenu);   //show_lunch_menu);
 router.get('/dinner-menu', controller.activeDinnerMenu);  //show_dinner_menu);
 router.get('/regional-menu', controller.activeRegionalMenu);   //show_regional_menu);
-//router.get('/login', controller.show_login_page);
-//router.post('/login', login, controller.handle_login);
+router.get('/admin', controller.show_login_page);
+router.post('/admin', login, controller.handle_login);
 
 router.use(function(req, res) {
     res.status(404);

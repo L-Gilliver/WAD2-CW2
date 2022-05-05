@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
+        <title>West Coast Restaurant</title>
+    </head>
+<body>
+    <div class="page-end">
+            <header>
+                West Coast
+            </header>
+            <nav>
+                <a href="/">
+                    About Us
+                </a>
+                <a href="/lunch-menu">
+                    Lunch Menu
+                </a>
+                <a href="/dinner-menu">
+                    Dinner Menu
+                </a>
+                <a href="/regional-menu">
+                    Regional Menu
+                </a>
+                <a href="#contact-anchor">
+                    Get In Touch
+                </a>
+            </nav>
+        </div>
+    <main>
+        <h1>{{title}}</h1>
+        <h2>Sign In</h2>
+        <div>
+            <!-- Login Form -->
+            <form method="POST" action="/login">
+                <div>
+                    <label for="username">
+                        User Name
+                    </label>
+                    <div>
+                        <input type="text" id="username" name="username" placeholder="username">
+                    </div>
+                </div>
+                <div>
+                    <label for="password">
+                        Password
+                    </label>
+                    <div>
+                        <input type="password" id="password" name="password" placeholder="password">
+                    </div>
+                </div>
+                <button type="submit" formaction="/admin" formmethod="post">Sign In</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

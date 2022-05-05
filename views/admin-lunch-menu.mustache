@@ -1,0 +1,30 @@
+       
+       
+        <section>
+            <h3>UPDATE LUNCH MENU</h3>
+            <div>
+                <div class="specialStarters">
+                {{#lunchSpecialStarter}}
+                    <p>{{name}}&nbsp;<span class="recipe">{{active}}</span></p>
+                    <button class="addBtn">Add to Menu</button>
+                    <button class="RemoveBtn">Remove from Menu</button>
+                {{/lunchSpecialStarter}}
+                </div>
+                {{#lunchSpecialMain}}
+                    <input type="checkbox" id="lunchSpecialMain-1" name="lunchSpecialMain-1">
+                    <label for="lunchSpecialMain-1">{{name}}</label><br>
+                {{/lunchSpecialMain}}
+                {{#lunchStarters}}
+                    <input type="checkbox" id="lunchStarters-1" name="lunchStarters-1">
+                    <label for="lunchStarters-1">{{name}}</label><br>
+                {{/lunchStarters}}
+                {{#lunchMains}}
+                    <input type="checkbox" id="lunchMains-1" name="lunchMains-1">
+                    <label for="lunchMains-1">{{name}}</label><br>
+                {{/lunchMains}}
+                {{#lunchDesserts}}
+                    <input type="checkbox" id="lunchDesserts-1" name="lunchDesserts-1">
+                    <label for="lunchDesserts-1">{{name}}</label><br>
+                {{/lunchDesserts}}
+            </div>
+        </section>

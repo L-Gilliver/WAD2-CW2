@@ -173,8 +173,9 @@ class Menus {
         console.log('db entry dishes added to regional menu');
     }
 
+    /* Functions for finding active menu items to populate menu page */
+    
     //LUNCH MENU
-
     //get chef specials starters for lunch menu
     getActiveLunchSpecialStarter() {
         return new Promise((resolve, reject) => {
@@ -242,7 +243,6 @@ class Menus {
     }
 
     //DINNER MENU
-
     //get chef special starters for dinner menu
     getActiveDinnerSpecialStarter() {
         return new Promise((resolve, reject) => {
@@ -310,7 +310,6 @@ class Menus {
     }
 
     //REGIONAL MENU
-
     //get starters for regional menu
     getActiveRegionalStarters() {
         return new Promise((resolve, reject) => {
@@ -351,7 +350,184 @@ class Menus {
         })
     }
 
-    //ADMIN INTERACTIONS
+    /* Functions for getting all saved dishes */
+    
+    //LUNCH MENU
+    //get chef specials starters for lunch menu
+    getAllLunchSpecialStarter() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'true' }, function (err, lunchSpecialStarters) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(lunchSpecialStarters);
+                    console.log('getAllLunchSpecialStarter() returns: ', lunchSpecialStarters);
+                }
+            })
+        })
+    }
+    //get chef specials mains for lunch menu
+    getAllLunchSpecialMain() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'lunch', course: 'main', chefSpecial: 'true' }, function (err, lunchSpecialMains) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(lunchSpecialMains);
+                    console.log('getAllLunchSpecialMain() returns: ', lunchSpecialMains);
+                }
+            })
+        })
+    }
+    //get starters for lunch menu
+    getAllLunchStarters() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'false' }, function (err, lunchStarters) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(lunchStarters);
+                    console.log('getAllLunchStarters() returns: ', lunchStarters);
+                }
+            })
+        })
+    }
+    //get mains for lunch menu
+    getAllLunchMains() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'lunch', course: 'main', chefSpecial: 'false' }, function (err, lunchMains) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(lunchMains);
+                    console.log('getAllLunchMains() returns: ', lunchMains);
+                }
+            })
+        })
+    }
+    //get desserts for lunch menu
+    getAllLunchDesserts() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'lunch', course: 'dessert', chefSpecial: 'false' }, function (err, lunchDesserts) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(lunchDesserts);
+                    console.log('getAllLunchDesserts() returns: ', lunchDesserts);
+                }
+            })
+        })
+    }
+
+    //DINNER MENU
+    //get chef special starters for dinner menu
+    getAllDinnerSpecialStarter() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'dinner', course: 'starter', chefSpecial: 'true' }, function (err, dinnerSpecialStarters) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(dinnerSpecialStarters);
+                    console.log('getAllDinnerSpecialStarter() returns: ', dinnerSpecialStarters);
+                }
+            })
+        })
+    }
+    //get chef specials mains for dinner menu
+    getAllDinnerSpecialMain() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'true' }, function (err, dinnerSpecialMains) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(dinnerSpecialMains);
+                    console.log('getAllDinnerSpecialMain() returns: ', dinnerSpecialMains);
+                }
+            })
+        })
+    }
+    //get starters for dinner menu
+    getAllDinnerStarters() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'dinner', course: 'starter', chefSpecial: 'false' }, function (err, dinnerStarters) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(dinnerStarters);
+                    console.log('getAllDinnerStarters() returns: ', dinnerStarters);
+                }
+            })
+        })
+    }
+    //get mains for dinner menu
+    getAllDinnerMains() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'false'} , function (err, dinnerMains) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(dinnerMains);
+                    console.log('getAllDinnerMains() returns: ', dinnerMains);
+                }
+            })
+        })
+    }
+    //get desserts for dinner menu
+    getAllDinnerDesserts() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'dinner', course: 'dessert', chefSpecial: 'false' }, function (err, dinnerDesserts) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(dinnerDesserts);
+                    console.log('getAllDinnerDesserts() returns: ', dinnerDesserts);
+                }
+            })
+        })
+    }
+
+    //REGIONAL MENU
+    //get starters for regional menu
+    getAllRegionalStarters() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'regional', course: 'starter', chefSpecial: 'false' }, function (err, regionalStarters) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(regionalStarters);
+                    console.log('getAllRegionalStarters() returns: ', regionalStarters);
+                }
+            })
+        })
+    }
+    //get mains for regional menu
+    getAllRegionalMains() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'regional', course: 'main', chefSpecial: 'false' }, function (err, regionalMains) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(regionalMains);
+                    console.log('getAllRegionalMains() returns: ', regionalMains);
+                }
+            })
+        })
+    }
+    //get desserts for regional menu
+    getAllRegionalDesserts() {
+        return new Promise((resolve, reject) => {
+            this.db.find({ menu: 'regional', course: 'dessert', chefSpecial: 'false' }, function (err, regionalDesserts) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(regionalDesserts);
+                    console.log('getAllRegionalDesserts() returns: ', regionalDesserts);
+                }
+            })
+        })
+    }
+
+    /* Functions for Admin interaction */
     addEntry(name, description, ingredients, allergens, price, menu, course, chefSpecial, active) {
         var entry = {
             name: name,

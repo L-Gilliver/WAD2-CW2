@@ -1,6 +1,5 @@
 const menusDAO = require("../models/menuModel");
 const userDao = require("../models/userModel.js");
-const { login } = require('../auth/auth')
 
 const db = new menusDAO();
 db.init();
@@ -124,11 +123,103 @@ exports.show_login_page = function (req, res) {
   res.render("user/login");
 };
 
+/*
 exports.handle_login = function (req, res) {
   // res.redirect("/new");
-  res.render("newLogin", {
-    title: "Admin Login",
-    user: "user",
-    //user: req.cookies.jwt.username,
+  res.render("admin", {
+    //user: "user",
+    user: req.cookies.jwt.username,
   });
+};*/
+
+
+exports.handle_login = async function (req, res) {
+
+  let lunchSpecialStarter;
+  let lunchSpecialMain;
+  let lunchStarters;
+  let lunchMains;
+  let lunchDesserts;
+  let dinnerSpecialStarter;
+  let dinnerSpecialMain;
+  let dinnerStarters;
+  let dinnerMains;
+  let dinnerDesserts;
+  let regionalStarters;
+  let regionalMains;
+  let regionalDesserts;
+console.log("testing for error 1");
+  //chain promises get all lunch/dinner/regional dishes disregarding active status
+  db.getAllLunchSpecialStarter()
+    .then((list) => {
+      console.log("All dishes promise 1 resolved", list)
+      lunchSpecialStarter = list;
+      return db.getAllLunchSpecialMain();
+    }).then((list => {
+      console.log("All dishes promise 2 resolved", list)
+      lunchSpecialMain = list;
+      return db.getAllLunchStarters();
+    })).then((list => {
+      console.log("All dishes promise 3 resolved", list)
+      lunchStarters = list;
+      return db.getAllLunchMains();
+    })).then((list => {
+      console.log("All dishes promise 4 resolved", list)
+      lunchMains = list;
+      return db.getAllLunchDesserts();
+    })).then((list => {
+      console.log("All dishes promise 5 resolved", list)
+      lunchDesserts = list;
+      return db.getAllDinnerSpecialStarter();
+    })).then((list) => {
+      console.log("All dishes promise 6 resolved", list)
+      dinnerSpecialStarter = list;
+      return db.getAllDinnerSpecialMain();
+    }).then((list => {
+      console.log("All dishes promise 7 resolved", list)
+      dinnerSpecialMain = list;
+      return db.getAllDinnerStarters();
+    })).then((list => {
+      console.log("All dishes promise 8 resolved", list)
+      dinnerStarters = list;
+      return db.getAllDinnerMains();
+    })).then((list => {
+      console.log("All dishes promise 9 resolved", list)
+      dinnerMains = list;
+      return db.getAllDinnerDesserts();
+    })).then((list => {
+      console.log("All dishes promise 10 resolved", list)
+      dinnerDesserts = list;
+      return db.getAllRegionalStarters();
+    })).then((list => {
+      console.log("All dishes promise 11 resolved", list)
+      regionalStarters = list;
+      return db.getAllRegionalMains();
+    })).then((list => {
+      console.log("All dishes promise 12 resolved", list)
+      regionalMains = list;
+      return db.getAllRegionalDesserts();
+    })).then((list => {
+      console.log("All dishes promise 13 resolved", list)
+      regionalDesserts = list;
+      res.render("admin", { //user/admin
+        user: req.cookies.jwt.username,
+        lunchSpecialStarter: lunchSpecialStarter,
+        lunchSpecialMain: lunchSpecialMain,
+        lunchStarters: lunchStarters,
+        lunchMains: lunchMains,
+        lunchDesserts: lunchDesserts,
+        dinnerSpecialStarter: dinnerSpecialStarter,
+        dinnerSpecialMain: dinnerSpecialMain,
+        dinnerStarters: dinnerStarters,
+        dinnerMains: dinnerMains,
+        dinnerDesserts: dinnerDesserts,
+        regionalStarters: regionalStarters,
+        regionalMains: regionalMains,
+        regionalDesserts: regionalDesserts,
+      });
+    }))
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
 };

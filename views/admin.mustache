@@ -1,9 +1,18 @@
 <html>
     <header>
-        {{>head}}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
+        <title>West Coast Restaurant</title>
     </header>
     <body>
     <main>
+        {{#user}}
+            <a id="logout" href="/logout" class="btn btn-primary">
+                Sign out
+            </a>
+        {{/user}}
         <section class="actionBox">
             <h3>ADD NEW MENU ITEM</h3>
             <form>
@@ -78,9 +87,30 @@
         <section>
             <h3>UPDATE CURRENT MENUS</h3>
             <div>
-                {{#active}}
-                    <h6>Menu</h6>
-                {{/active}}
+                <h3>LUNCH MENU<h3>
+                <div class="specialStarters">
+                {{#lunchSpecialStarter}}
+                    <p>{{name}}&nbsp;<span class="recipe">{{active}}</span></p>
+                    <button class="addBtn">Add to Menu</button>
+                    <button class="RemoveBtn">Remove from Menu</button>
+                {{/lunchSpecialStarter}}
+                </div>
+                {{#lunchSpecialMain}}
+                    <input type="checkbox" id="lunchSpecialMain-1" name="lunchSpecialMain-1">
+                    <label for="lunchSpecialMain-1">{{name}}</label><br>
+                {{/lunchSpecialMain}}
+                {{#lunchStarters}}
+                    <input type="checkbox" id="lunchStarters-1" name="lunchStarters-1">
+                    <label for="lunchStarters-1">{{name}}</label><br>
+                {{/lunchStarters}}
+                {{#lunchMains}}
+                    <input type="checkbox" id="lunchMains-1" name="lunchMains-1">
+                    <label for="lunchMains-1">{{name}}</label><br>
+                {{/lunchMains}}
+                {{#lunchDesserts}}
+                    <input type="checkbox" id="lunchDesserts-1" name="lunchDesserts-1">
+                    <label for="lunchDesserts-1">{{name}}</label><br>
+                {{/lunchDesserts}}
             </div>
             <div>
             <button>REMOVE</button>

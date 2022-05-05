@@ -18,25 +18,11 @@ class UserDAO {
         this.db.insert({
             user: 'Admin',
             password:
-            '$2b$10$I82WRFuGghOMjtu3LLZW9OAMrmYOlMZjEEkh.vx.K2MM05iu5hY2C'
+            '$2a$10$5G0bULtv08R3E4yCAqeG3eevcpAW14KeVs3yGexJHFgGjeKJwFvJy'
         });
         return this;
     }
-    
-    create(username, password) {
-        const that = this;
-        bcrypt.hash(password, saltRounds).then(function(hash) {
-            var entry = {
-                user: username,
-                password: hash,
-            };
-            that.db.insert(entry, function (err) {
-            if (err) {
-            console.log("Can't insert user: ", username);
-            }
-            });
-        });
-    }
+
     lookup(user, cb) {
         this.db.find({'user': user}, function (err, entries) {
         if (err) {
