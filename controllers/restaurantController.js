@@ -5,371 +5,116 @@ const { login } = require('../auth/auth')
 const db = new menusDAO();
 db.init();
 
-/* menusDAO.where not a function
-  menusDAO.find not a function
-//Gets lunch menu items by course and special status
-exports.activeLunchMenu = async function (req, res, next) {
-  const specStarter = await menusDAO.where({ menu: 'lunch', course: 'starter', chefSpecial: 'true', active: 'true' }).select("");
-  const specMain = await menusDAO.where({ menu: 'lunch', course: 'main', chefSpecial: 'true', active: 'true' }).select("");
-  const starters = await menusDAO.where({ menu: 'lunch', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
-  const mains = await menusDAO.where({ menu: 'lunch', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
-  const desserts = await menusDAO.where({ menu: 'lunch', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
-  res.render("lunchMenu", { specStarter, specMain, starters, mains, desserts });
-}
-//Gets landing page with added elements
-exports.activeDinnerMenu = async function (req, res, next) {
-  const specStarter = await menusDAO.where({ menu: 'dinner', course: 'starter', chefSpecial: 'true', active: 'true' }).select("");
-  const specMain = await menusDAO.where({ menu: 'dinner', course: 'main', chefSpecial: 'true', active: 'true' }).select("");
-  const starters = await menusDAO.where({ menu: 'dinner', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
-  const mains = await menusDAO.where({ menu: 'dinner', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
-  const desserts = await menusDAO.where({ menu: 'dinner', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
-  res.render("dinnerMenu", { specStarter, specMain, starters, mains, desserts });
-}
-//Gets landing page with added elements
-exports.activeRegionalMenu = async function (req, res, next) {
-  //const _email = res.locals.user.email;
-  const starters = await menusDAO.where({ menu: 'regional', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
-  const mains = await menusDAO.where({ menu: 'regional', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
-  const desserts = await menusDAO.where({ menu: 'regional', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
-  res.render("lunchMenu", { specStarter, specMain, starters, mains, desserts });
-}
-*/
-
-// loop through array?
-/*
-exports.activeLunchMenu = function (req, res) {
-  db.getActiveLunchItems()
-    .then((list) => {
-      res.render("menu", {
-        title: "Lunch Menu",
-        specialsStarter: list,
-        specialsMain: list,
-        starters: list,
-        mains: list,
-        desserts: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-}
-exports.activeDinnerMenu = function (req, res) {
-  db.getActiveDinnerItems()
-    .then((list) => {
-      res.render("menu", {
-        title: "Dinner Menu",
-        specialsStarter: list,
-        specialsMain: list,
-        starters: list,
-        mains: list,
-        desserts: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-}
-exports.activeRegionalMenu = function (req, res) {
-  db.getActiveRegionalItems()
-    .then((list) => {
-      console.log("values returns ", list)
-      res.render("regionalMenu", {
-        title: "Regional Menu",
-        starters: list,
-        //mains: list,
-        //desserts: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-}
-*/
 exports.activeLunchMenu = async function (req, res) {
-  try {
-    console.log("path tracer 1");
-    title = "Lunch Menu";
-    specStarter = db.getActiveLunchSpecialStarter();
-    specMain = db.getActiveLunchSpecialMain();
-    starters = db.getActiveLunchStarters();
-    mains = db.getActiveLunchMains();
-    desserts = db.getActiveLunchDesserts();
-    res.render("menu", { title, specStarter, specMain, starters, mains, desserts })
-  }
-  catch (err) {
-    console.log("Lunch menu loading error! : ", err);
-  }
+
+  let specStarter;
+  let specMain;
+  let starters;
+  let mains;
+  let desserts;
+
+  db.getActiveLunchSpecialStarter()
+    .then((list) => {
+      console.log("Lunch promise 1 resolved", list)
+      specStarter = list;
+      return db.getActiveLunchSpecialMain();
+    }).then((list => {
+      console.log("Lunch promise 2 resolved", list)
+      specMain = list;
+      return db.getActiveLunchStarters();
+    })).then((list => {
+      console.log("Lunch promise 3 resolved", list)
+      starters = list;
+      return db.getActiveLunchMains();
+    })).then((list => {
+      console.log("Lunch promise 4 resolved", list)
+      mains = list;
+      return db.getActiveLunchDesserts();
+    })).then((list => {
+      console.log("Lunch promise 5 resolved", list)
+      desserts = list;
+      res.render("menu", {
+        specialsStarter: specStarter,
+        specialsMain: specMain,
+        starters: starters,
+        mains: mains,
+        desserts: desserts,
+      });
+    }))
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
 };
 
 exports.activeDinnerMenu = async function (req, res) {
-  try {
-    title = "Dinner Menu";
-    specStarter = db.getActiveDinnerSpecialStarter();
-    specMain = db.getActiveDinnerSpecialMain();
-    starters = db.getActiveDinnerStarters();
-    mains = db.getActiveDinnerMains();
-    desserts = db.getActiveDinnerDesserts();
-    res.render("menu", { title, specStarter, specMain, starters, mains, desserts })
-  }
-  catch (err) {
-    console.log("Dinner menu loading error! : ", err);
-  }
+
+  let specStarter;
+  let specMain;
+  let starters;
+  let mains;
+  let desserts;
+
+  db.getActiveDinnerSpecialStarter()
+    .then((list) => {
+      console.log("Dinner promise 1 resolved", list)
+      specStarter = list;
+      return db.getActiveDinnerSpecialMain();
+    }).then((list => {
+      console.log("Dinner promise 2 resolved", list)
+      specMain = list;
+      return db.getActiveDinnerStarters();
+    })).then((list => {
+      console.log("Dinner promise 3 resolved", list)
+      starters = list;
+      return db.getActiveDinnerMains();
+    })).then((list => {
+      console.log("Dinner promise 4 resolved", list)
+      mains = list;
+      return db.getActiveDinnerDesserts();
+    })).then((list => {
+      console.log("Dinner promise 5 resolved", list)
+      desserts = list;
+      res.render("menu", {
+        specialsStarter: specStarter,
+        specialsMain: specMain,
+        starters: starters,
+        mains: mains,
+        desserts: desserts,
+      });
+    }))
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
 };
 
 exports.activeRegionalMenu = async function (req, res) {
-  try {
-    title = "Regional Menu";
-    starters = db.getActiveRegionalStarters();
-    mains = db.getActiveRegionalMains();
-    desserts = db.getActiveRegionalDesserts();
-    res.render("menu", { title, starters, mains, desserts })
-  }
-  catch (err) {
-    console.log("dinner menu loading error! : ", err);
-  }
+
+  let starters;
+  let mains;
+  let desserts;
+
+  db.getActiveRegionalStarters()
+    .then((list) => {
+      console.log("Regional promise 1 resolved", list)
+      starters = list;
+      return db.getActiveRegionalMains();
+    }).then((list => {
+      console.log("Regional promise 2 resolved", list)
+      mains = list;
+      return db.getActiveRegionalDesserts();
+    })).then((list => {
+      console.log("Regional promise 3 resolved", list)
+      desserts = list;
+      res.render("menu", {
+        starters: starters,
+        mains: mains,
+        desserts: desserts,
+      });
+    }))
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
 };
-
-/*
-exports.activeDinnerMenu = function (req, res) {
-  try {
-    let specStarter = await menusDAO.where({ menu: 'dinner', course: 'starter', chefSpecial: 'true', active: 'true' }).select("");
-    let specMain = await menusDAO.where({ menu: 'dinner', course: 'main', chefSpecial: 'true', active: 'true' }).select("");
-    let starters = await menusDAO.where({ menu: 'dinner', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
-    let mains = await menusDAO.where({ menu: 'dinner', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
-    let desserts = await menusDAO.where({ menu: 'dinner', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
-    res.render("dinnerMenu", { specStarter, specMain, starters, mains, desserts });
-  }
-  catch(error) {
-    console.error("Error displaying dinner menu:", error);
-  }
-};
-exports.activeRegionalMenu = async function (req, res) {
-  try {
-    let starters = await menusDAO.where({ menu: 'regional', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
-    let mains = await menusDAO.where({ menu: 'regional', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
-    let desserts = await menusDAO.where({ menu: 'regional', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
-    res.render("lunchMenu", { starters, mains, desserts });
-  }
-  catch {
-    console.log("Error displaying regional menu!");
-  }
-};
-*/
-
-
-/*
-exports.activeLunchMenu = function (req, res) {
-  db.getActiveLunchSpecialStarters()
-    .then((list) => {
-      res.render("lunchMenu", {
-        title: "Lunch Menu",
-        specialsStarter: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveLunchSpecialMains()
-    .then((list) => {
-      res.render("lunchMenu", {
-        specialsMain: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveLunchStarters()
-    .then((list) => {
-      res.render("lunchMenu", {
-        starters: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveLunchMains()
-    .then((list) => {
-      res.render("lunchMenu", {
-        mains: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveLunchDesserts()
-    .then((list) => {
-      res.render("lunchMenu", {
-        desserts: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-}
-
-exports.activeDinnerMenu = function (req, res) {
-  db.getActiveDinnerSpecialStarters()
-    .then((list) => {
-      res.render("dinnerMenu", {
-        title: "Dinner Menu",
-        specialsStarter: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveDinnerSpecialMains()
-    .then((list) => {
-      res.render("dinnerMenu", {
-        specialsMain: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveDinnerStarters()
-    .then((list) => {
-      res.render("dinnerMenu", {
-        starters: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveDinnerMains()
-    .then((list) => {
-      res.render("dinnerMenu", {
-        mains: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveDinnerDesserts()
-    .then((list) => {
-      res.render("dinnerMenu", {
-        desserts: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-}
-
-exports.activeRegionalMenu = function (req, res) {
-    db.getActiveRegionalStarters()
-    .then((list) => {
-      res.render("regionalMenu", {
-        title: "Regional Menu",
-        starters: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveRegionalMains()
-    .then((list) => {
-      res.render("regionalMenu", {
-        mains: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-
-    db.getActiveRegionalDesserts()
-    .then((list) => {
-      res.render("regionalMenu", {
-        desserts: list,
-      });
-    })
-    .catch((err) => {
-      console.log("promise rejected", err);
-    });
-}
-////////
-/*
-exports.activeLunchMenu = async function (req, res) {
-  const specialsStarter = await menusDAO.where({ menu: lunch, course: starter, chefSpecial: true, active: true });
-  const specialsSMain = await menusDAO.where({ menu: lunch, course: starter, chefSpecial: true, active: true });
-  const starters = await menusDAO.where({ menu: lunch, course: starter, chefSpecial: false, active: true });
-  const mains = await menusDAO.where({ menu: lunch, course: main, chefSpecial: false, active: true });
-  const desserts = await menusDAO.where({ menu: lunch, course: dessert, chefSpecial: false, active: true });
-    res.render("lunch", { specialsStarter, specialsSMain, starters, mains, desserts });
-}
-*/
-//Lunch Menu Page
-/*
-exports.active_lunch_special_starters = function (req, res) {
-
-}
-exports.active_lunch_special_mains = function (req, res) {
-
-}
-exports.active_lunch_starters = function (req, res) {
-
-}
-exports.active_lunch_mains = function (req, res) {
-
-}
-exports.active_lunch_desserts = function (req, res) {
-
-}
-*/
-//Dinner Menu Page
-/*
-exports.active_dinner_special_starters = function (req, res) {
-
-}
-exports.active_dinner_special_mains = function (req, res) {
-
-}
-exports.active_dinner_starters = function (req, res) {
-
-}
-exports.active_dinner_mains = function (req, res) {
-  db.getActiveDinnerMains()
-      .then((list) => {
-        res.render("dinnerMenu", {
-          mains: list,
-        });
-      })
-      .catch((err) => {
-        console.log("promise rejected", err);
-      });
-}
-exports.active_dinner_desserts = function (req, res) {
-  db.getActiveDinnerDesserts()
-      .then((list) => {
-        res.render("dinnerMenu", {
-          desserts: list,
-        });
-      })
-      .catch((err) => {
-        console.log("promise rejected", err);
-      });
-}
-
-//Regional Menu Page
-exports.active_regional_starters = function (req, res) {
-
-}
-exports.active_regional_mains = function (req, res) {
-
-}
-exports.active_regional_desserts = function (req, res) {
-
-}
-*/
 
 //FOR ADMIN LOGIN AND INTERACTION
 exports.show_login_page = function (req, res) {

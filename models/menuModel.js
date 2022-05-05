@@ -32,13 +32,27 @@ class Menus {
             menu: 'dinner',
             course: 'main',
             chefSpecial: 'true',
-            active: 'false'
+            active: 'true'
+        });
+
+        this.db.insert({
+            name: "Mango Sticky Rice",
+            description: 'Mango sticky rice is a traditional Thai dessert.',
+            ingredients: '[Rice, Coconut water, brown Sugar]',
+            allergens: '[]',
+            price: '6.00',
+            menu: 'regional',
+            course: 'dessert',
+            chefSpecial: 'false',
+            active: 'true'
         });
         console.log('db entry dish added to menu');
     }
 
     //LUNCH MENU
-     getActiveLunchSpecialStarter() {
+
+    //get chef specials starters for lunch menu
+    getActiveLunchSpecialStarter() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'true', active: 'true' }, function (err, activeLunchSpecialStarters) {
                 if (err) {
@@ -50,7 +64,8 @@ class Menus {
             })
         })
     }
-     getActiveLunchSpecialMain() {
+    //get chef specials mains for lunch menu
+    getActiveLunchSpecialMain() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'lunch', course: 'main', chefSpecial: 'true', active: 'true' }, function (err, activeLunchSpecialMains) {
                 if (err) {
@@ -62,7 +77,8 @@ class Menus {
             })
         })
     }
-     getActiveLunchStarters() {
+    //get starters for lunch menu
+    getActiveLunchStarters() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'false', active: 'true' }, function (err, activeLunchStarters) {
                 if (err) {
@@ -74,7 +90,8 @@ class Menus {
             })
         })
     }
-     getActiveLunchMains() {
+    //get mains for lunch menu
+    getActiveLunchMains() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'lunch', course: 'main', chefSpecial: 'false', active: 'true' }, function (err, activeLunchMains) {
                 if (err) {
@@ -86,7 +103,8 @@ class Menus {
             })
         })
     }
-     getActiveLunchDesserts() {
+    //get desserts for lunch menu
+    getActiveLunchDesserts() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'lunch', course: 'dessert', chefSpecial: 'false', active: 'true' }, function (err, activeLunchDesserts) {
                 if (err) {
@@ -99,7 +117,10 @@ class Menus {
         })
     }
 
-     getActiveDinnerSpecialStarter() {
+    //DINNER MENU
+
+    //get chef special starters for dinner menu
+    getActiveDinnerSpecialStarter() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'starter', chefSpecial: 'true', active: 'true' }, function (err, activeDinnerSpecialStarters) {
                 if (err) {
@@ -111,7 +132,8 @@ class Menus {
             })
         })
     }
-     getActiveDinnerSpecialMain() {
+    //get chef specials mains for dinner menu
+    getActiveDinnerSpecialMain() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'true', active: 'true' }, function (err, activeDinnerSpecialMains) {
                 if (err) {
@@ -123,7 +145,8 @@ class Menus {
             })
         })
     }
-     getActiveDinnerStarters() {
+    //get starters for dinner menu
+    getActiveDinnerStarters() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'starter', chefSpecial: 'false', active: 'true' }, function (err, activeDinnerStarters) {
                 if (err) {
@@ -135,7 +158,8 @@ class Menus {
             })
         })
     }
-     getActiveDinnerMains() {
+    //get mains for dinner menu
+    getActiveDinnerMains() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'false', active: 'true' }, function (err, activeDinnerMains) {
                 if (err) {
@@ -147,7 +171,8 @@ class Menus {
             })
         })
     }
-     getActiveDinnerDesserts() {
+    //get desserts for dinner menu
+    getActiveDinnerDesserts() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'dinner', course: 'dessert', chefSpecial: 'false', active: 'true' }, function (err, activeDinnerDesserts) {
                 if (err) {
@@ -160,7 +185,10 @@ class Menus {
         })
     }
 
-     getActiveRegionalStarters() {
+    //REGIONAL MENU
+
+    //get starters for regional menu
+    getActiveRegionalStarters() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'regional', course: 'starter', chefSpecial: 'false', active: 'true' }, function (err, activeRegionalStarters) {
                 if (err) {
@@ -172,7 +200,8 @@ class Menus {
             })
         })
     }
-     getActiveRegionalMains() {
+    //get mains for regional menu
+    getActiveRegionalMains() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'regional', course: 'main', chefSpecial: 'false', active: 'true' }, function (err, activeRegionalMains) {
                 if (err) {
@@ -184,7 +213,8 @@ class Menus {
             })
         })
     }
-     getActiveRegionalDesserts() {
+    //get desserts for regional menu
+    getActiveRegionalDesserts() {
         return new Promise((resolve, reject) => {
             this.db.find({ menu: 'regional', course: 'dessert', chefSpecial: 'false', active: 'true' }, function (err, activeRegionalDesserts) {
                 if (err) {
@@ -196,154 +226,28 @@ class Menus {
             })
         })
     }
-/*
-getActiveLunchSpecialStarter() {
-        try {
-            const specStarter = this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'true', active: 'true' });
-            return specStarter;
-        }
-        catch (error) {
-            console.error("Error displaying lunch chef special starter:", error);
-        }
-    }
-     getActiveLunchSpecialMain() {
-        try {
-            const specMain = this.db.find({ menu: 'lunch', course: 'main', chefSpecial: 'true', active: 'true' });
-            return specMain;
-        }
-        catch (error) {
-            console.error("Error displaying lunch chef special main:", error);
-        }
-    }
-     getActiveLunchStarters() {
-        try {
-            console.log("path tracer 2");
-            const starters = this.db.find({ menu: 'lunch', course: 'starter', chefSpecial: 'false', active: 'true' });
-            console.log(starters);
-            return starters;
-        }
-        catch (error) {
-            console.error("Error displaying lunch starters:", error);
-        }
-    }
-     getActiveLunchMains() {
-        try {
-            const mains = this.db.find({ menu: 'lunch', course: 'main', chefSpecial: 'false', active: 'true' });
-            return mains;
-        }
-        catch (error) {
-            console.error("Error displaying lunch mains:", error);
-        }
-    }
-     getActiveLunchDesserts() {
-        try {
-            const desserts = this.db.find({ menu: 'dinner', course: 'dessert', chefSpecial: 'false', active: 'true' });
-            return desserts;
-        }
-        catch (error) {
-            console.error("Error displaying lunch desserts:", error);
-        }
-    }
 
-     getActiveDinnerSpecialStarter() {
-        try {
-            const specStarter = this.db.find({ menu: 'dinner', course: 'starter', chefSpecial: 'true', active: 'true' });
-            return specStarter;
+    //ADMIN INTERACTIONS
+    addEntry(name, description, ingredients, allergens, price, menu, course, chefSpecial, active) {
+        var entry = {
+            name: name,
+            description: description,
+            ingredients: ingredients,
+            allergens: allergens,
+            price: price,
+            menu: menu,
+            course: course,
+            chefSpecial: chefSpecial,
+            active: active
         }
-        catch (error) {
-            console.error("Error displaying dinner chef special starter:", error);
-        }
-    }
-     getActiveDinnerSpecialMain() {
-        try {
-            const specMain = this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'true', active: 'true' });
-            return specMain;
-        }
-        catch (error) {
-            console.error("Error displaying dinner chef special main:", error);
-        }
-    }
-     getActiveDinnerStarters() {
-        try {
-            const starters = this.db.find({ menu: 'dinner', course: 'starter', chefSpecial: 'false', active: 'true' });
-            return starters;
-        }
-        catch (error) {
-            console.error("Error displaying dinner starters:", error);
-        }
-    }
-     getActiveDinnerMains() {
-        try {
-            const mains = this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'false', active: 'true' });
-            return mains;
-        }
-        catch (error) {
-            console.error("Error displaying dinner mains:", error);
-        }
-    }
-     getActiveDinnerDesserts() {
-        try {
-            const desserts = this.db.find({ menu: 'dinner', course: 'dessert', chefSpecial: 'false', active: 'true' });
-            return desserts;
-        }
-        catch (error) {
-            console.error("Error displaying dinner desserts:", error);
-        }
-    }
-
-     getActiveRegionalStarters() {
-        try {
-            const starters = this.db.find({ menu: 'regional', course: 'starter', chefSpecial: 'false', active: 'true' });
-            return starters;
-        }
-        catch (error) {
-            console.error("Error displaying regional starters:", error);
-        }
-    }
-     getActiveRegionalMains() {
-        try {
-            const mains = this.db.find({ menu: 'regional', course: 'main', chefSpecial: 'false', active: 'true' });
-            return mains;
-        }
-        catch (error) {
-            console.error("Error displaying regional mains:", error);
-        }
-    }
-     getActiveRegionalDesserts() {
-        try {
-            const desserts = this.db.find({ menu: 'regional', course: 'dessert', chefSpecial: 'false', active: 'true' });
-            return desserts;
-        }
-        catch (error) {
-            console.error("Error displaying regional desserts:", error);
-        }
-    }
-
-    /*
-    
-    
-    
-        //ADMIN INTERACTIONS
-        addEntry(name, description, ingredients, allergens, price, menu, course, chefSpecial, active) {
-            var entry = {
-                name: name,
-                description: description,
-                ingredients: ingredients,
-                allergens: allergens,
-                price: price,
-                menu: menu,
-                course: course,
-                chefSpecial: chefSpecial,
-                active: active
+        console.log('entry created', entry);
+        this.db.insert(entry, function (err, doc) {
+            if (err) {
+                console.log('Error inserting document', subject);
+            } else {
+                console.log('document inserted into the database', doc);
             }
-            console.log('entry created', entry);
-            this.db.insert(entry, function (err, doc) {
-                if (err) {
-                    console.log('Error inserting document', subject);
-                } else {
-                    console.log('document inserted into the database', doc);
-                }
-            })
-        }*/
+        })
+    }
 }
 module.exports = Menus;
