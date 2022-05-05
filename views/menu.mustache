@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="./css/styles.css">
         <title>West Coast Restaurant</title>
     </head>
-    <body>
+    <body onload="hideEmptySpecials()">
         <div class="page-end">
             <header>
                 West Coast
@@ -39,11 +39,11 @@
                         <h3>STARTER</h3>
                         {{#specialsStarter}}
                             <div>
-                                <h4>{{name}}</h4>
-                                <p>{{description}}</p>
-                                <p>Contains: {{ingredients}}</p>
-                                <p class="bold"">Contains {{allergens}}</p>
-                                <p>{{price}}</p>
+                                <h4 class="specials-content">{{name}}</h4>
+                                <p class="specials-content">{{description}}</p>
+                                <p class="specials-content">Contains: {{ingredients}}</p>
+                                <p class="bold specials-content">Contains {{allergens}}</p>
+                                <p class="specials-content">{{price}}</p>
                             </div>
                         {{/specialsStarter}}
                     </div>
@@ -51,11 +51,11 @@
                         <h3>MAIN</h3>
                         {{#specialsMain}}
                             <div>
-                                <h4>{{name}}</h4>
-                                <p>{{description}}</p>
-                                <p>Contains: {{ingredients}}</p>
-                                <p class="bold"">Contains {{allergens}}</p>
-                                <p>{{price}}</p>
+                                <h4 class="specials-content">{{name}}</h4>
+                                <p class="specials-content">{{description}}</p>
+                                <p class="specials-content">Contains: {{ingredients}}</p>
+                                <p class="bold specials-content">Contains {{allergens}}</p>
+                                <p class="specials-content">{{price}}</p>
                             </div>
                         {{/specialsMain}}
                     </div>
@@ -67,7 +67,7 @@
                             <h4>{{name}}</h4>
                             <p>{{description}}</p>
                             <p>Contains: {{ingredients}}</p>
-                            <p class="bold"">Contains {{allergens}}</p>
+                            <p class="bold">Contains {{allergens}}</p>
                             <p>{{price}}</p>
                         </div>
                     {{/starters}}
@@ -79,7 +79,7 @@
                             <h4>{{name}}</h4>
                             <p>{{description}}</p>
                             <p>Contains: {{ingredients}}</p>
-                            <p class="bold"">Contains {{allergens}}</p>
+                            <p class="bold">Contains {{allergens}}</p>
                             <p>{{price}}</p>
                         </div>
                     {{/mains}}
@@ -91,7 +91,7 @@
                             <h4>{{name}}</h4>
                             <p>{{description}}</p>
                             <p>Contains: {{ingredients}}</p>
-                            <p class="bold"">Contains {{allergens}}</p>
+                            <p class="bold">Contains {{allergens}}</p>
                             <p>{{price}}</p>
                         </div>
                     {{/desserts}}
@@ -112,5 +112,6 @@
                 <img src="./imgs/social-media-icons.png" alt="facebook twitter, instagram icons">
             </div>
         </footer>
+        <script src="../public/JavaScript/menuFunctionality.js" defer></script>
     </body>
 </html>
