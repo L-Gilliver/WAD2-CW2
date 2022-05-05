@@ -3,90 +3,111 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
         <title>West Coast Restaurant</title>
     </head>
     <body>
-        <nav>
-            <a href="/">
-                About Us
-            </a>
-            <a href="/lunch-menu">
-                Lunch Menu
-            </a>
-            <a href="/dinner-menu">
-                Dinner Menu
-            </a>
-            <a href="/regional-menu">
-                Regional Menu
-            </a>
-            <a href="#contact-anchor">
-                Get In Touch
-            </a>
-        </nav>
-        <h1>{{title}}</h1>
-        <div id="specials">
-            <h3>CHEF'S SPECIALS</h3>
-            <div>
-                {{#specialsStarter}}
+        <div class="page-end">
+            <header>
+                West Coast
+            </header>
+            <nav>
+                <a href="/">
+                    About Us
+                </a>
+                <a href="/lunch-menu">
+                    Lunch Menu
+                </a>
+                <a href="/dinner-menu">
+                    Dinner Menu
+                </a>
+                <a href="/regional-menu">
+                    Regional Menu
+                </a>
+                <a href="#contact-anchor">
+                    Get In Touch
+                </a>
+            </nav>
+        </div>
+        <main>
+            <section id="menu-content">
+                <h1>{{title}}</h1>
+                <div id="specials">
+                    <h3>CHEF'S SPECIALS</h3>
                     <div>
-                        <h6>{{dishName}}</h6>
-                        <p>{{description}}</p>
-                        <p>Contains: {{ingredients}}</p>
-                        <p>Contains {{allergens}}</p>
-                        <p>{{price}}</p>
+                        {{#specialsStarter}}
+                            <div>
+                                <h6>{{dishName}}</h6>
+                                <p>{{description}}</p>
+                                <p>Contains: {{ingredients}}</p>
+                                <p>Contains {{allergens}}</p>
+                                <p>{{price}}</p>
+                            </div>
+                        {{/specialsStarter}}
                     </div>
-                {{/specialsStarter}}
-            </div>
-            <div>
-                {{#specialsMain}}
                     <div>
-                        <h6>{{dishName}}</h6>
-                        <p>{{description}}</p>
-                        <p>Contains: {{ingredients}}</p>
-                        <p>Contains {{allergens}}</p>
-                        <p>{{price}}</p>
+                        {{#specialsMain}}
+                            <div>
+                                <h6>{{dishName}}</h6>
+                                <p>{{description}}</p>
+                                <p>Contains: {{ingredients}}</p>
+                                <p>Contains {{allergens}}</p>
+                                <p>{{price}}</p>
+                            </div>
+                        {{/specialsMain}}
                     </div>
-                {{/specialsMain}}
+                </div>
+                <div>
+                    <h3>STARTERS</h3>
+                    {{#starters}}
+                        <div>
+                            <h6>{{dishName}}</h6>
+                            <p>{{description}}</p>
+                            <p>Contains: {{ingredients}}</p>
+                            <p>Contains {{allergens}}</p>
+                            <p>{{price}}</p>
+                        </div>
+                    {{/starters}}
+                </div>
+                <div>
+                    <h3>MAINS</h3>
+                    {{#mains}}
+                        <div>
+                            <h6>{{dishName}}</h6>
+                            <p>{{description}}</p>
+                            <p>Contains: {{ingredients}}</p>
+                            <p>Contains {{allergens}}</p>
+                            <p>{{price}}</p>
+                        </div>
+                    {{/mains}}
+                </div>
+                <div>
+                    <h3>DESSERTS</h3>
+                    {{#desserts}}
+                        <div>
+                            <h6>{{dishName}}</h6>
+                            <p>{{description}}</p>
+                            <p>Contains: {{ingredients}}</p>
+                            <p>Contains {{allergens}}</p>
+                            <p>{{price}}</p>
+                        </div>
+                    {{/desserts}}
+                </div>
+            </section>
+        </main>
+        <footer class="page-end fl" id="contact-anchor">
+            <div class="footer-section">
+                <h4>Restaurant Address</h4>
+                <p>123 St Vincent Street<br>Glasgow<br>G2 5TS</p>
             </div>
-        </div>
-        <div>
-            <h3>STARTERS</h3>
-            {{#starters}}
-                <div>
-                    <h6>{{dishName}}</h6>
-                    <p>{{description}}</p>
-                    <p>Contains: {{ingredients}}</p>
-                    <p>Contains {{allergens}}</p>
-                    <p>{{price}}</p>
-                </div>
-            {{/starters}}
-        </div>
-        <div>
-            <h3>MAINS</h3>
-            {{#mains}}
-                <div>
-                    <h6>{{dishName}}</h6>
-                    <p>{{description}}</p>
-                    <p>Contains: {{ingredients}}</p>
-                    <p>Contains {{allergens}}</p>
-                    <p>{{price}}</p>
-                </div>
-            {{/mains}}
-        </div>
-        <div>
-            <h3>DESSERTS</h3>
-            {{#desserts}}
-                <div>
-                    <h6>{{dishName}}</h6>
-                    <p>{{description}}</p>
-                    <p>Contains: {{ingredients}}</p>
-                    <p>Contains {{allergens}}</p>
-                    <p>{{price}}</p>
-                </div>
-            {{/desserts}}
-        </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>0123 456 7890<br>westcoast@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow us on social media</h4>
+                <img src="./imgs/social-media-icons.png" alt="facebook twitter, instagram icons">
+            </div>
+        </footer>
     </body>
-    <footer>
-        <p>contact info</p>
-    </footer>
 </html>

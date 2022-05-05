@@ -21,20 +21,132 @@ class Menus {
             chefSpecial: 'false',
             active: 'true'
         });
-        console.log('db entry dish added to menu');
-
+        this.db.insert({
+            name: "Coley Salad",
+            description: 'Fresh caught Coley served with baby potato and basil salad.',
+            ingredients: '[Coley, Potato, Parmesan, Basil, Garlic, Salad Leaves, Onion, Peppers, Cucumber]',
+            allergens: '[]',
+            price: '14.50',
+            menu: 'lunch',
+            course: 'main',
+            chefSpecial: 'false',
+            active: 'true'
+        });
+        this.db.insert({
+            name: "Lemon Posset",
+            description: 'Flavourful citrus set pudding.',
+            ingredients: '[Double Cream, Sugar, Lemon]',
+            allergens: '[Dairy]',
+            price: '4.00',
+            menu: 'lunch',
+            course: 'dessert',
+            chefSpecial: 'false',
+            active: 'true'
+        });
+        this.db.insert({
+            name: "Salmon Fishcakes",
+            description: 'Salmon Fishcakes served with spinach puree and watercress.',
+            ingredients: '[Salmon, Potato, Parsley, Garlic, Chives, Egg]',
+            allergens: '[Egg]',
+            price: '7.00',
+            menu: 'lunch',
+            course: 'starter',
+            chefSpecial: 'true',
+            active: 'true'
+        });
+        this.db.insert({
+            name: "Cod Fritters",
+            description: 'Bite-sized fritters with garlic aioli.',
+            ingredients: '[Cod, Potato, Parsley, Garlic, Chives, Parsley]',
+            allergens: '[Gluten]',
+            price: '7.00',
+            menu: 'lunch',
+            course: 'starter',
+            chefSpecial: 'true',
+            active: 'true'
+        });
+        console.log('db entry dishes added to lunch menu');
+        /////////////
+        this.db.insert({
+            name: "Salmon Fishcakes",
+            description: 'Salmon Fishcakes served with spinach puree and watercress.',
+            ingredients: '[Salmon, Potato, Parsley, Garlic, Chives, Egg]',
+            allergens: '[Egg]',
+            price: '7.00',
+            menu: 'dinner',
+            course: 'starter',
+            chefSpecial: 'false',
+            active: 'true'
+        });
         this.db.insert({
             name: "Venison & Fries",
             description: 'Scottish Venison steak served with homemade fries and stroganoff sauce.',
             ingredients: '[Venison, Potato, Onion, Garlic, Mushroom, Beef stock]',
             allergens: '[Gluten, Dairy]',
-            price: '17.00',
+            price: '21.00',
             menu: 'dinner',
             course: 'main',
             chefSpecial: 'true',
             active: 'true'
         });
+        this.db.insert({
+            name: "Venison & Fries",
+            description: 'Scottish Venison steak served with homemade fries and stroganoff sauce.',
+            ingredients: '[Venison, Potato, Onion, Garlic, Mushroom, Beef stock]',
+            allergens: '[Gluten, Dairy]',
+            price: '21.00',
+            menu: 'dinner',
+            course: 'starter',
+            chefSpecial: 'false',
+            active: 'true'
+        });
+        this.db.insert({
+            name: "Venison & Fries",
+            description: 'Scottish Venison steak served with homemade fries and stroganoff sauce.',
+            ingredients: '[Venison, Potato, Onion, Garlic, Mushroom, Beef stock]',
+            allergens: '[Gluten, Dairy]',
+            price: '21.00',
+            menu: 'dinner',
+            course: 'main',
+            chefSpecial: 'false',
+            active: 'true'
+        });
+        this.db.insert({
+            name: "Venison & Fries",
+            description: 'Scottish Venison steak served with homemade fries and stroganoff sauce.',
+            ingredients: '[Venison, Potato, Onion, Garlic, Mushroom, Beef stock]',
+            allergens: '[Gluten, Dairy]',
+            price: '21.00',
+            menu: 'dinner',
+            course: 'dessert',
+            chefSpecial: 'false',
+            active: 'true'
+        });
+        console.log('db entry dishes added to dinner menu');
 
+        ///////////
+        this.db.insert({
+            name: "Mango Sticky Rice",
+            description: 'Mango sticky rice is a traditional Thai dessert.',
+            ingredients: '[Rice, Coconut water, brown Sugar]',
+            allergens: '[]',
+            price: '6.00',
+            menu: 'regional',
+            course: 'starter',
+            chefSpecial: 'false',
+            active: 'true'
+        });
+        this.db.insert({
+            name: "Mango Sticky Rice",
+            description: 'Mango sticky rice is a traditional Thai dessert.',
+            ingredients: '[Rice, Coconut water, brown Sugar]',
+            allergens: '[]',
+            price: '6.00',
+            menu: 'regional',
+            course: 'main',
+            chefSpecial: 'false',
+            active: 'true'
+        });
         this.db.insert({
             name: "Mango Sticky Rice",
             description: 'Mango sticky rice is a traditional Thai dessert.',
@@ -46,7 +158,7 @@ class Menus {
             chefSpecial: 'false',
             active: 'true'
         });
-        console.log('db entry dish added to menu');
+        console.log('db entry dishes added to regional menu');
     }
 
     //LUNCH MENU
