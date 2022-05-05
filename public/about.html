@@ -4,39 +4,84 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
         <title>West Coast Restaurant</title>
     </head>
 
 
     <body>
-        <header>
-            West Coast
-        </header>
-        <nav>
-            <a href="/lunch-menu">
-                Lunch Menu
-            </a>
-            <a href="/dinner-menu">
-                Dinner Menu
-            </a>
-            <a href="/regional-menu">
-                Regional Menu
-            </a>
-            <a href="#contact-anchor">
-                Get In Touch
-            </a>
-        </nav>
+        <div class="page-end">
+            <header>
+                West Coast
+            </header>
+            <nav>
+                <a href="/">
+                    About Us
+                </a>
+                <a href="/lunch-menu">
+                    Lunch Menu
+                </a>
+                <a href="/dinner-menu">
+                    Dinner Menu
+                </a>
+                <a href="/regional-menu">
+                    Regional Menu
+                </a>
+                <a href="#contact-anchor">
+                    Get In Touch
+                </a>
+            </nav>
+        </div>
         <main>
-            <h1> About us</h1>
-            <p> Welcome to our site. We're dedicated to giving you the very best experience with a focus on dependability,
-                customer service and uniqueness.</p>
-            <p> We have come a long way from our beginnings when our passion drove us to carry out intense research and gave us
-                the impetus to turn hard work and inspiration into to a booming online presence.</p>
-
-            <p> We hope you enjoy our site. If you have any questions or comments, please don't hesitate to contact us.</p>
+            <img src="./imgs/home.jpg" alt="Chef presenting a selection of the restaurants dishes" class="banner-img">
+            <section class="about-info flex-row">
+                <div id="about-content">
+                    <h1> A LITTLE ABOUT US...</h1>
+                    <p> Here at West Coast, we have been proudly serving the people of Glasgow our 
+                        quality dishes for almost a decade! Located on St Vincent Street in Glasgow 
+                        city centre, we are only a short walk from Glasgow Queen Street Train Station
+                        so why not come along for a bite to eat!</p>
+                    <p> We use the finest, locally sourced produced where we can for all of our dishes, 
+                        that our chefs bring to life using bold flavours and rustic presentation to give 
+                        that fresh homemade feel.</p>
+                    <p> Our menu changes regularly, allowing us to use the tastiest local produce in season,
+                         but also keep an eye out for our monthly regional night menu! Every month on the 18th,
+                          we host a special regional night, sampling a different countries cuisine for that 
+                          nights menu.</p>
+                </div>
+                <div id="about-img">
+                    <img src="./imgs/chef.jpeg" alt="Chef dusting hands with flour to roll dough" id="about-img">
+                </div>
+            </section>
+            <img src="./imgs/fish-chips-banner.jpg" alt="Battered fish and chips" class="banner-img">
+            <section class="menu-info flex-row">
+                <div class="menu-anchor">
+                    <img src="./imgs/soup.jpeg" alt="Lunch menu">
+                    <button>Lunch Menu</button>
+                </div>
+                <div class="menu-anchor">
+                    <img src="./imgs/steak.jpeg" alt="Dinner menu">
+                    <button>Lunch Menu</button>
+                </div>
+                <div class="menu-anchor">
+                    <img src="./imgs/thaifood.jpeg" alt="Regional menu">
+                    <button>Lunch Menu</button>
+                </div>
+            </section>
         </main>
-        <footer>
-            <p id="contact-anchor">Get in touch</p>
+        <footer class="page-end fl" id="contact-anchor">
+            <div class="footer-section">
+                <h4>Restaurant Address</h4>
+                <p>123 St Vincent Street<br>Glasgow<br>G2 5TS</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>0123 456 7890<br>westcoast@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow us on social media</h4>
+                <img src="./imgs/social-media-icons.png" alt="facebook twitter, instagram icons">
+            </div>
         </footer>
     </body>
 </html>
