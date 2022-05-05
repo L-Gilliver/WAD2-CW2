@@ -36,6 +36,7 @@ exports.activeRegionalMenu = async function (req, res, next) {
 */
 
 // loop through array?
+/*
 exports.activeLunchMenu = function (req, res) {
   db.getActiveLunchItems()
     .then((list) => {
@@ -71,20 +72,89 @@ exports.activeDinnerMenu = function (req, res) {
 exports.activeRegionalMenu = function (req, res) {
   db.getActiveRegionalItems()
     .then((list) => {
+      console.log("values returns ", list)
       res.render("regionalMenu", {
         title: "Regional Menu",
         starters: list,
-        mains: list,
-        desserts: list,
+        //mains: list,
+        //desserts: list,
       });
     })
     .catch((err) => {
       console.log("promise rejected", err);
     });
 }
+*/
+exports.activeLunchMenu = async function (req, res) {
+  try {
+    console.log("path tracer 1");
+    title = "Lunch Menu";
+    specStarter = db.getActiveLunchSpecialStarter();
+    specMain = db.getActiveLunchSpecialMain();
+    starters = db.getActiveLunchStarters();
+    mains = db.getActiveLunchMains();
+    desserts = db.getActiveLunchDesserts();
+    res.render("menu", { title, specStarter, specMain, starters, mains, desserts })
+  }
+  catch (err) {
+    console.log("Lunch menu loading error! : ", err);
+  }
+};
 
+exports.activeDinnerMenu = async function (req, res) {
+  try {
+    title = "Dinner Menu";
+    specStarter = db.getActiveDinnerSpecialStarter();
+    specMain = db.getActiveDinnerSpecialMain();
+    starters = db.getActiveDinnerStarters();
+    mains = db.getActiveDinnerMains();
+    desserts = db.getActiveDinnerDesserts();
+    res.render("menu", { title, specStarter, specMain, starters, mains, desserts })
+  }
+  catch (err) {
+    console.log("Dinner menu loading error! : ", err);
+  }
+};
 
+exports.activeRegionalMenu = async function (req, res) {
+  try {
+    title = "Regional Menu";
+    starters = db.getActiveRegionalStarters();
+    mains = db.getActiveRegionalMains();
+    desserts = db.getActiveRegionalDesserts();
+    res.render("menu", { title, starters, mains, desserts })
+  }
+  catch (err) {
+    console.log("dinner menu loading error! : ", err);
+  }
+};
 
+/*
+exports.activeDinnerMenu = function (req, res) {
+  try {
+    let specStarter = await menusDAO.where({ menu: 'dinner', course: 'starter', chefSpecial: 'true', active: 'true' }).select("");
+    let specMain = await menusDAO.where({ menu: 'dinner', course: 'main', chefSpecial: 'true', active: 'true' }).select("");
+    let starters = await menusDAO.where({ menu: 'dinner', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
+    let mains = await menusDAO.where({ menu: 'dinner', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
+    let desserts = await menusDAO.where({ menu: 'dinner', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
+    res.render("dinnerMenu", { specStarter, specMain, starters, mains, desserts });
+  }
+  catch(error) {
+    console.error("Error displaying dinner menu:", error);
+  }
+};
+exports.activeRegionalMenu = async function (req, res) {
+  try {
+    let starters = await menusDAO.where({ menu: 'regional', course: 'starter', chefSpecial: 'false', active: 'true' }).select("");
+    let mains = await menusDAO.where({ menu: 'regional', course: 'main', chefSpecial: 'false', active: 'true' }).select("");
+    let desserts = await menusDAO.where({ menu: 'regional', course: 'dessert', chefSpecial: 'false', active: 'true' }).select("");
+    res.render("lunchMenu", { starters, mains, desserts });
+  }
+  catch {
+    console.log("Error displaying regional menu!");
+  }
+};
+*/
 
 
 /*
@@ -267,10 +337,26 @@ exports.active_dinner_starters = function (req, res) {
 
 }
 exports.active_dinner_mains = function (req, res) {
-
+  db.getActiveDinnerMains()
+      .then((list) => {
+        res.render("dinnerMenu", {
+          mains: list,
+        });
+      })
+      .catch((err) => {
+        console.log("promise rejected", err);
+      });
 }
 exports.active_dinner_desserts = function (req, res) {
-
+  db.getActiveDinnerDesserts()
+      .then((list) => {
+        res.render("dinnerMenu", {
+          desserts: list,
+        });
+      })
+      .catch((err) => {
+        console.log("promise rejected", err);
+      });
 }
 
 //Regional Menu Page
