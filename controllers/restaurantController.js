@@ -34,6 +34,7 @@ exports.activeLunchMenu = async function (req, res) {
       console.log("Lunch promise 5 resolved", list)
       desserts = list;
       res.render("menu", {
+        title: "LUNCH MENU",
         specialsStarter: specStarter,
         specialsMain: specMain,
         starters: starters,
@@ -75,6 +76,7 @@ exports.activeDinnerMenu = async function (req, res) {
       console.log("Dinner promise 5 resolved", list)
       desserts = list;
       res.render("menu", {
+        title: "DINNER MENU",
         specialsStarter: specStarter,
         specialsMain: specMain,
         starters: starters,
@@ -106,6 +108,7 @@ exports.activeRegionalMenu = async function (req, res) {
       console.log("Regional promise 3 resolved", list)
       desserts = list;
       res.render("menu", {
+        title: "REGIONAL MENU",
         starters: starters,
         mains: mains,
         desserts: desserts,

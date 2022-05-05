@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="menuPage">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,68 +35,70 @@
                 <h1>{{title}}</h1>
                 <div id="specials">
                     <h3>CHEF'S SPECIALS</h3>
-                    <div>
+                    <div class="course">
+                        <h3>STARTER</h3>
                         {{#specialsStarter}}
                             <div>
-                                <h6>{{dishName}}</h6>
+                                <h4>{{name}}</h4>
                                 <p>{{description}}</p>
                                 <p>Contains: {{ingredients}}</p>
-                                <p>Contains {{allergens}}</p>
+                                <p class="bold"">Contains {{allergens}}</p>
                                 <p>{{price}}</p>
                             </div>
                         {{/specialsStarter}}
                     </div>
-                    <div>
+                    <div class="course">
+                        <h3>MAIN</h3>
                         {{#specialsMain}}
                             <div>
-                                <h6>{{dishName}}</h6>
+                                <h4>{{name}}</h4>
                                 <p>{{description}}</p>
                                 <p>Contains: {{ingredients}}</p>
-                                <p>Contains {{allergens}}</p>
+                                <p class="bold"">Contains {{allergens}}</p>
                                 <p>{{price}}</p>
                             </div>
                         {{/specialsMain}}
                     </div>
                 </div>
-                <div>
+                <div class="course">
                     <h3>STARTERS</h3>
                     {{#starters}}
                         <div>
-                            <h6>{{dishName}}</h6>
+                            <h4>{{name}}</h4>
                             <p>{{description}}</p>
                             <p>Contains: {{ingredients}}</p>
-                            <p>Contains {{allergens}}</p>
+                            <p class="bold"">Contains {{allergens}}</p>
                             <p>{{price}}</p>
                         </div>
                     {{/starters}}
                 </div>
-                <div>
+                <div class="course">
                     <h3>MAINS</h3>
                     {{#mains}}
                         <div>
-                            <h6>{{dishName}}</h6>
+                            <h4>{{name}}</h4>
                             <p>{{description}}</p>
                             <p>Contains: {{ingredients}}</p>
-                            <p>Contains {{allergens}}</p>
+                            <p class="bold"">Contains {{allergens}}</p>
                             <p>{{price}}</p>
                         </div>
                     {{/mains}}
                 </div>
-                <div>
+                <div class="course">
                     <h3>DESSERTS</h3>
                     {{#desserts}}
                         <div>
-                            <h6>{{dishName}}</h6>
+                            <h4>{{name}}</h4>
                             <p>{{description}}</p>
                             <p>Contains: {{ingredients}}</p>
-                            <p>Contains {{allergens}}</p>
+                            <p class="bold"">Contains {{allergens}}</p>
                             <p>{{price}}</p>
                         </div>
                     {{/desserts}}
                 </div>
             </section>
         </main>
-        <footer class="page-end fl" id="contact-anchor">
+        <footer class="page-end" id="contact-anchor">
             <div class="footer-section">
                 <h4>Restaurant Address</h4>
                 <p>123 St Vincent Street<br>Glasgow<br>G2 5TS</p>
