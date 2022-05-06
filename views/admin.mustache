@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="adminPage">
     <header>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,116 +9,126 @@
     </header>
     <body>
     <main>
-        {{#user}}
-            <a id="logout" href="/logout" class="btn btn-primary">
-                Sign out
-            </a>
-        {{/user}}
-        <section class="actionBox">
-            <h3>ADD NEW MENU ITEM</h3>
-            <form>
-                <label for="newDishName">NAME</label>
-                <input type="text" id="newDishName" name="newDishName"><br>
-                <label for="newDishDesc">DESCRIPTION</label>
-                <input type="text" id="newDishDesc" name="newDishDesc"><br>
-                <label for="newDishIngr">INGREDIENTS</label>
-                <input type="text" id="newDishIngr" name="newDishIngr"><br>
-                <button type="button" id="newDishIngrAdd" name="newDishIngrAdd">ADD</button><br>
-                <label for="newDishAllergens">ALLERGENS</label>
-                <select name="newDishAllergens" id="newDishAllergens">
-                    <option value="Dairy">Dairy</option>
-                    <option value="Gluten">Gluten</option>
-                    <option value="Fish">Shellfish</option>
-                    <option value="Shellfsh">Shellfish</option>
-                    <option value="Soy">Shellfish</option>
-                    <option value="Eggs">Shellfish</option>
-                    <option value="Peanuts">Shellfish</option>
-                    <option value="Peanuts">Tree Nuts</option>
-                </select>
-                <button type="button" id="newDishAllergenAdd" name="newDishAllergenAdd">ADD</button><br>
-                <label for="newDishPrice">PRICE</label>
-                <div id="price-section">
-                    <p>£</p>
-                    <select id="newDishPrice1">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <p>.</p>
-                    <select id="newDishPrice2">
-                        <option value="00">00</option>
-                        <option value="50">50</option>
-                    </select>
-                </div>
-                <label for="newDishMenu">ASSIGN MENU</label>
-                <select id="newDishMenu">
-                    <option>Dinner</option>
-                    <option>Lunch</option>
-                    <option>Regional</option>
-                </select>
-                <label for="newDishCourse">ASSIGN COURSE</label>
-                <select id="newDishCourse">
-                    <option>Starter</option>
-                    <option>Dinner</option>
-                    <option>Dessert</option>
-                </select>
-                <label for="newDishSpecials">CHEF SPECIAL</label>
-                <input type="checkbox" id="newDishSpecials" name="newDishSpecials" value="true">
-                <label for="newDishActive">ACTIVE</label>
-                <input type="checkbox" id="newDishActive" name="newDishActive" value="true">
-            </form>
-        </section>
-        <section>
-            <h3>UPDATE CURRENT MENUS</h3>
-            <div>
-                <h3>LUNCH MENU<h3>
-                <div class="specialStarters">
-                {{#lunchSpecialStarter}}
-                    <p>{{name}}&nbsp;<span class="recipe">{{active}}</span></p>
-                    <button class="addBtn">Add to Menu</button>
-                    <button class="RemoveBtn">Remove from Menu</button>
-                {{/lunchSpecialStarter}}
-                </div>
-                {{#lunchSpecialMain}}
-                    <input type="checkbox" id="lunchSpecialMain-1" name="lunchSpecialMain-1">
-                    <label for="lunchSpecialMain-1">{{name}}</label><br>
-                {{/lunchSpecialMain}}
-                {{#lunchStarters}}
-                    <input type="checkbox" id="lunchStarters-1" name="lunchStarters-1">
-                    <label for="lunchStarters-1">{{name}}</label><br>
-                {{/lunchStarters}}
-                {{#lunchMains}}
-                    <input type="checkbox" id="lunchMains-1" name="lunchMains-1">
-                    <label for="lunchMains-1">{{name}}</label><br>
-                {{/lunchMains}}
-                {{#lunchDesserts}}
-                    <input type="checkbox" id="lunchDesserts-1" name="lunchDesserts-1">
-                    <label for="lunchDesserts-1">{{name}}</label><br>
-                {{/lunchDesserts}}
-            </div>
-            <div>
-            <button>REMOVE</button>
-            <input type="text" placeholder="Search Dishes..">
-            <button>ADD</button>
-            </div>
-        </section>
+        <div id="adminContent">
+            {{#user}}
+                <a id="logout" href="/logout" class="btn btn-primary">
+                    Sign out
+                </a>
+            {{/user}}
+            <section class="actionBox">
+                <h3>ADD NEW MENU ITEM</h3>
+                <form>
+                    <div class="pairing">
+                        <label for="newDishName">NAME</label>
+                        <input type="text" id="newDishName" name="newDishName"><br>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishDesc">DESCRIPTION</label>
+                        <input type="text" id="newDishDesc" name="newDishDesc"><br>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishIngr">INGREDIENTS</label>
+                        <input type="text" id="newDishIngr" name="newDishIngr"><br>
+                        <button type="button" id="newDishIngrAdd" class="addBtn" name="newDishIngrAdd">ADD</button><br>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishAllergens">ALLERGENS</label>
+                        <select name="newDishAllergens" id="newDishAllergens">
+                            <option value="Dairy">Dairy</option>
+                            <option value="Gluten">Gluten</option>
+                            <option value="Fish">Fish</option>
+                            <option value="Shellfsh">Shellfish</option>
+                            <option value="Soy">Soy</option>
+                            <option value="Eggs">Eggs</option>
+                            <option value="Peanuts">Peanuts</option>
+                            <option value="Tree Nuts">Tree Nuts</option>
+                        </select>
+                        <button type="button" id="newDishAllergenAdd" class="addBtn" name="newDishAllergenAdd">ADD</button><br>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishPrice" id="price">PRICE</label>
+                        <div id="price-section">
+                            <p>£
+                            <select id="newDishPrice1">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                            </select>
+                            <span>.</span>
+                            <select id="newDishPrice2">
+                                <option value="00">00</option>
+                                <option value="50">50</option>
+                            </select>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishMenu">ASSIGN MENU</label>
+                        <select id="newDishMenu">
+                            <option>Dinner</option>
+                            <option>Lunch</option>
+                            <option>Regional</option>
+                        </select>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishCourse">ASSIGN COURSE</label>
+                        <select id="newDishCourse">
+                            <option>Starter</option>
+                            <option>Dinner</option>
+                            <option>Dessert</option>
+                        </select>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishSpecials">CHEF SPECIAL</label>
+                        <input type="checkbox" id="newDishSpecials" name="newDishSpecials" value="true">
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishActive">ACTIVE</label>
+                        <input type="checkbox" id="newDishActive" name="newDishActive" value="true">
+                    </div>
+                    <input type="submit" value="ADD DISH">
+                </form>
+            </section>
+            <section>
+                <h3>UPDATE CURRENT MENUS</h3>
+                <form>
+                    <button formaction="/admin-lunch-menu" formmethod="get">EDIT LUNCH MENU</button>
+                    <button formaction="/admin-dinner-menu" formmethod="get">EDIT DINNER MENU</button>
+                    <button formaction="/admin-regional-menu" formmethod="get">EDIT REGIONAL MENU</button>
+                </form>
+            </section>
+        <div>
     </main>
+    <footer class="page-end" id="contact-anchor">
+            <div class="footer-section">
+                <h4>Restaurant Address</h4>
+                <p>123 St Vincent Street<br>Glasgow<br>G2 5TS</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>0123 456 7890<br>westcoast@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow us on social media</h4>
+                <img src="./imgs/social-media-icons.png" alt="facebook twitter, instagram icons">
+            </div>
+        </footer>
     </body>
 </html>

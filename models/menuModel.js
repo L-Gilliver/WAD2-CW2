@@ -33,7 +33,7 @@ class Menus {
             active: 'true'
         });
         this.db.insert({
-            name: "Coley Salad",
+            name: "Chicken Breast",
             description: 'Fresh caught Coley served with baby potato and basil salad.',
             ingredients: ['Coley', 'Potato', 'Parmesan', 'Basil', 'Garlic', 'Salad Leaves', 'Onion', 'Peppers', 'Cucumber'],
             allergens: [],
@@ -133,7 +133,7 @@ class Menus {
             chefSpecial: 'false',
             active: 'true'
         });
-        
+
         console.log('db entry dishes added to dinner menu');
 
         ///////////
@@ -174,7 +174,7 @@ class Menus {
     }
 
     /* Functions for finding active menu items to populate menu page */
-    
+
     //LUNCH MENU
     //get chef specials starters for lunch menu
     getActiveLunchSpecialStarter() {
@@ -351,7 +351,7 @@ class Menus {
     }
 
     /* Functions for getting all saved dishes */
-    
+
     //LUNCH MENU
     //get chef specials starters for lunch menu
     getAllLunchSpecialStarter() {
@@ -462,7 +462,7 @@ class Menus {
     //get mains for dinner menu
     getAllDinnerMains() {
         return new Promise((resolve, reject) => {
-            this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'false'} , function (err, dinnerMains) {
+            this.db.find({ menu: 'dinner', course: 'main', chefSpecial: 'false' }, function (err, dinnerMains) {
                 if (err) {
                     reject(err);
                 } else {
@@ -546,6 +546,37 @@ class Menus {
                 console.log('Error inserting document', subject);
             } else {
                 console.log('document inserted into the database', doc);
+            }
+        })
+    }
+
+    updateLunchMenu(name, active) {
+        this.db.update({ name: name }, { $set: { active: active } }, function (err, doc) {
+            if (err) {
+                console.log("error updating lunch menu!", subject);
+            }
+            else {
+                console.log("Lunch menu updated!", doc);
+            }
+        })
+    }
+    updateDinnerMenu(name, active) {
+        this.db.update({ name: name, active: active }, { $set: { active: active } }, {}, function (err, doc) {
+            if (err) {
+                console.log("error updating dinner menu!", subject);
+            }
+            else {
+                console.log("Dinner menu updated!", doc);
+            }
+        })
+    }
+    updateRegionalMenu(name, active) {
+        this.db.update({ name: name }, { $set: { active: active } }, function (err, doc) {
+            if (err) {
+                console.log("error updating regional menu!", subject);
+            }
+            else {
+                console.log("Regional menu updated!", doc);
             }
         })
     }

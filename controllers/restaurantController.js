@@ -123,33 +123,24 @@ exports.show_login_page = function (req, res) {
   res.render("user/login");
 };
 
-/*
+
 exports.handle_login = function (req, res) {
   // res.redirect("/new");
   res.render("admin", {
-    //user: "user",
-    user: req.cookies.jwt.username,
+    user: "user",
   });
-};*/
+
+};
 
 
-exports.handle_login = async function (req, res) {
+exports.editLunchMenu = async function (req, res) {
 
   let lunchSpecialStarter;
   let lunchSpecialMain;
   let lunchStarters;
   let lunchMains;
   let lunchDesserts;
-  let dinnerSpecialStarter;
-  let dinnerSpecialMain;
-  let dinnerStarters;
-  let dinnerMains;
-  let dinnerDesserts;
-  let regionalStarters;
-  let regionalMains;
-  let regionalDesserts;
-console.log("testing for error 1");
-  //chain promises get all lunch/dinner/regional dishes disregarding active status
+
   db.getAllLunchSpecialStarter()
     .then((list) => {
       console.log("All dishes promise 1 resolved", list)
@@ -170,56 +161,141 @@ console.log("testing for error 1");
     })).then((list => {
       console.log("All dishes promise 5 resolved", list)
       lunchDesserts = list;
-      return db.getAllDinnerSpecialStarter();
-    })).then((list) => {
-      console.log("All dishes promise 6 resolved", list)
-      dinnerSpecialStarter = list;
-      return db.getAllDinnerSpecialMain();
-    }).then((list => {
-      console.log("All dishes promise 7 resolved", list)
-      dinnerSpecialMain = list;
-      return db.getAllDinnerStarters();
-    })).then((list => {
-      console.log("All dishes promise 8 resolved", list)
-      dinnerStarters = list;
-      return db.getAllDinnerMains();
-    })).then((list => {
-      console.log("All dishes promise 9 resolved", list)
-      dinnerMains = list;
-      return db.getAllDinnerDesserts();
-    })).then((list => {
-      console.log("All dishes promise 10 resolved", list)
-      dinnerDesserts = list;
-      return db.getAllRegionalStarters();
-    })).then((list => {
-      console.log("All dishes promise 11 resolved", list)
-      regionalStarters = list;
-      return db.getAllRegionalMains();
-    })).then((list => {
-      console.log("All dishes promise 12 resolved", list)
-      regionalMains = list;
-      return db.getAllRegionalDesserts();
-    })).then((list => {
-      console.log("All dishes promise 13 resolved", list)
-      regionalDesserts = list;
-      res.render("admin", { //user/admin
-        user: req.cookies.jwt.username,
+      res.render("admin-lunch-menu", {
+        user: 'user',
         lunchSpecialStarter: lunchSpecialStarter,
         lunchSpecialMain: lunchSpecialMain,
         lunchStarters: lunchStarters,
         lunchMains: lunchMains,
         lunchDesserts: lunchDesserts,
-        dinnerSpecialStarter: dinnerSpecialStarter,
-        dinnerSpecialMain: dinnerSpecialMain,
-        dinnerStarters: dinnerStarters,
-        dinnerMains: dinnerMains,
-        dinnerDesserts: dinnerDesserts,
-        regionalStarters: regionalStarters,
-        regionalMains: regionalMains,
-        regionalDesserts: regionalDesserts,
       });
     }))
     .catch((err) => {
       console.log("promise rejected", err);
     });
 };
+exports.editDinnerMenu = async function (req, res) {
+
+  let dinnerSpecialStarter;
+  let dinnerSpecialMain;
+  let dinnerStarters;
+  let dinnerMains;
+  let dinnerDesserts;
+
+  db.getAllDinnerSpecialStarter()
+    .then((list) => {
+      console.log("All dishes promise 1 resolved", list)
+      dinnerSpecialStarter = list;
+      return db.getAllDinnerSpecialMain();
+    }).then((list => {
+      console.log("All dishes promise 2 resolved", list)
+      dinnerSpecialMain = list;
+      return db.getAllDinnerStarters();
+    })).then((list => {
+      console.log("All dishes promise 3 resolved", list)
+      dinnerStarters = list;
+      return db.getAllDinnerMains();
+    })).then((list => {
+      console.log("All dishes promise 4 resolved", list)
+      dinnerMains = list;
+      return db.getAllDinnerDesserts();
+    })).then((list => {
+      console.log("All dishes promise 5 resolved", list)
+      dinnerDesserts = list;
+      res.render("admin-dinner-menu", {
+        user: 'user',
+        dinnerSpecialStarter: dinnerSpecialStarter,
+        dinnerSpecialMain: dinnerSpecialMain,
+        dinnerStarters: dinnerStarters,
+        dinnerMains: dinnerMains,
+        dinnerDesserts: dinnerDesserts,
+      });
+    }))
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
+};
+exports.editRegionalMenu = async function (req, res) {
+
+  let regionalStarters;
+  let regionalMains;
+  let regionalDesserts;
+
+  db.getAllRegionalStarters()
+    .then((list => {
+    console.log("All dishes promise 11 resolved", list)
+    regionalStarters = list;
+    return db.getAllRegionalMains();
+  })).then((list => {
+    console.log("All dishes promise 12 resolved", list)
+    regionalMains = list;
+    return db.getAllRegionalDesserts();
+  })).then((list => {
+    console.log("All dishes promise 13 resolved", list)
+    regionalDesserts = list;
+    console.log("error testing 123");
+    res.render("admin-regional-menu", {
+      user: 'user',
+      regionalStarters: regionalStarters,
+      regionalMains: regionalMains,
+      regionalDesserts: regionalDesserts,
+    });
+  }))
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
+};
+
+exports.AddToLunchMenu = async function (req, res) {
+  const name = req.body.dishName;
+  const active = true;
+  db.updateLunchMenu(name, active);
+  res.render("admin", {
+    user: "user",
+  });
+}
+exports.AddToDinnerMenu = async function (req, res) {
+  const name = req.body.dishName;
+  const active = true;
+  db.updateDinnerMenu(name, active);
+  res.render("admin", {
+    user: "user",
+  });
+}
+exports.AddToRegionalMenu = async function (req, res) {
+  const name = req.body.dishName;
+  const active = true;
+  db.updateRegionalMenu(name, active);
+  res.render("admin", {
+    user: "user",
+  });
+}
+
+exports.removeFromLunchMenu = async function (req, res) {
+  const name = req.body.dishName;
+  const active = false;
+  db.updateLunchMenu(name, active);
+  res.render("admin", {
+    user: "user",
+  });
+}
+exports.removeFromDinnerMenu = async function (req, res) {
+  const name = req.body.dishName;
+  const active = false;
+  db.updateDinnerMenu(name, active);
+  res.render("admin", {
+    user: "user",
+  });
+}
+exports.removeFromRegionalMenu = async function (req, res) {
+  const name = req.body.dishName;
+  const active = false;
+  db.updateRegionalMenu(name, active);
+  res.render("admin", {
+    user: "user",
+  });
+}
+
+exports.logout = function (req, res) {
+  res.clearCookie("jwt").status(200).redirect("/");
+}

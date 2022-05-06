@@ -13,7 +13,7 @@ exports.login = function (req, res,next) {
     }
     if (!user) {
       console.log("user ", username, " not found");
-      return res.render("admin");
+      return res.render("login");
     }
     //compare provided password with stored password
     bcrypt.compare(password, user.password, function (err, result) {
@@ -23,9 +23,10 @@ exports.login = function (req, res,next) {
         //create the access token 
         let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET,{expiresIn: 300}); 
         res.cookie("jwt", accessToken);
+        console.log("token created");
         next();
       } else {
-        return res.render("admin"); //res.status(403).send();
+        return res.render("login"); //res.status(403).send();
       }
     });
   });
