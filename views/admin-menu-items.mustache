@@ -34,14 +34,11 @@
         <div id="adminContent">
         <div>
             {{#user}}
-                <a id="logout" href="/logout" class="anchorBtn">
-                    Sign out
-                </a>
-                <form>
-                    <button id="back" formaction="/admin" formmethod="post" class="anchorBtn">
-                        Back 
-                    </button>
-                </form>
+                <div class="flex-row">
+                    <a id="logout" href="/logout" class="anchorBtn">
+                        Sign out
+                    </a>
+                </div>
             {{/user}} 
         </div>  
             <section class="actionBox">
@@ -51,101 +48,101 @@
                             <h3>CHEF SPECIALS STARTERS</h3>
                                 <form class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </form>
                             {{/lunchSpecialStarter}}
                             <h3>CHEF SPECIAL MAINS</h3>
                             {{#lunchSpecialMain}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/lunchSpecialMain}}
                              <h3>STARTERS</h3>
                             {{#lunchStarters}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/lunchStarters}}
                             <h3>MAINS</h3>
                             {{#lunchMains}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/lunchMains}}
                             <h3>DESSERTS</h3>
                             {{#lunchDesserts}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/lunchDesserts}}
                         </div>
             </section>
             <section class="actionBox">
-                    <h2>UPDATE DINNER MENU</h2>
+                    <h2>Update DINNER MENU</h2>
                         <div>
                             {{#dinnerSpecialStarter}}
                             <h3>CHEF SPECIALS STARTERS</h3>
                                 <form class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </form>
                             {{/dinnerSpecialStarter}}
                             <h3>CHEF SPECIAL MAINS</h3>
                             {{#dinnerSpecialMain}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/dinnerSpecialMain}}
                              <h3>STARTERS</h3>
                             {{#dinnerStarters}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/dinnerStarters}}
                             <h3>MAINS</h3>
                             {{#dinnerMains}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/dinnerMains}}
                             <h3>DESSERTS</h3>
                             {{#dinnerDesserts}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/dinnerDesserts}}
                         </div>
             </section>
             <section class="actionBox">
-                    <h2>UPDATE REGIONAL MENU</h2>
+                    <h2>Update REGIONAL MENU</h2>
                         <div>
                              <h3>STARTERS</h3>
                             {{#regionalStarters}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/regionalStarters}}
                             <h3>MAINS</h3>
                             {{#regionalMains}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/regionalMains}}
                             <h3>DESSERTS</h3>
                             {{#regionalDesserts}}
                                 <div class="pairing">
                                     <p>{{name}}</p>
-                                    <a href="admin-menu-items/{{_id}}" class="">UPDATE</a>
+                                    <a href="admin-menu-items/{{_id}}" class="anchorBtn">Update</a>
                                 </div>
                             {{/regionalDesserts}}
                         </div>

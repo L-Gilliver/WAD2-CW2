@@ -33,7 +33,7 @@
     <main>
         <div id="adminContent">
             {{#user}}
-                <a id="logout" href="/logout" class="btn btn-primary">
+                <a id="logout" href="/logout" class="logoutBtn">
                     Sign out
                 </a>
             {{/user}}
@@ -67,36 +67,53 @@
                         </select>
                         <button type="button" id="newDishAllergenAdd" class="addBtn" name="newDishAllergenAdd">ADD</button><br>
                     </div>
+
+                    
                     <div class="pairing">
                         <label for="newDishPrice" id="price">PRICE</label>
-                        <div id="price-section">
+                        <div class="price-select">
                             <p>£
-                            <select id="newDishPrice1">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                            </select>
-                            <span>.</span>
-                            <select id="newDishPrice2">
-                                <option value="00">00</option>
-                                <option value="50">50</option>
+                            <select id="newDishPrice" required>
+                                <option value="1.00">1.00</option>
+                                <option value="1.50">1.50</option>
+                                <option value="2.00">2.00</option>
+                                <option value="2.50">2.50</option>
+                                <option value="3.00">3.00</option>
+                                <option value="3.50">3.50</option>
+                                <option value="4.00">4.00</option>
+                                <option value="4.50">4.50</option>
+                                <option value="5.00">5.00</option>
+                                <option value="5.50">5.50</option>
+                                <option value="6.00">6.00</option>
+                                <option value="6.50">6.50</option>
+                                <option value="7.00">7.00</option>
+                                <option value="7.50">7.50</option>
+                                <option value="8.00">8.00</option>
+                                <option value="8.50">8.50</option>
+                                <option value="9.00">9.00</option>
+                                <option value="9.50">9.50</option>
+                                <option value="10.00">10.00</option>
+                                <option value="10.50">10.50</option>
+                                <option value="11.00">11.00</option>
+                                <option value="11.50">11.50</option>
+                                <option value="12.00">12.00</option>
+                                <option value="12.50">12.50</option>
+                                <option value="13.00">13.00</option>
+                                <option value="13.50">13.50</option>
+                                <option value="14.00">14.00</option>
+                                <option value="14.50">14.50</option>
+                                <option value="15.00">15.00</option>
+                                <option value="15.50">15.50</option>
+                                <option value="16.00">16.00</option>
+                                <option value="16.50">16.50</option>
+                                <option value="17.00">17.00</option>
+                                <option value="17.50">17.50</option>
+                                <option value="18.00">18.00</option>
+                                <option value="18.50">18.50</option>
+                                <option value="19.00">19.00</option>
+                                <option value="19.50">19.50</option>
+                                <option value="20.00">20.00</option>
+                                <option value="20.50">20.50</option>
                             </select>
                             </p>
                         </div>
@@ -125,13 +142,13 @@
                         <label for="newDishActive">ACTIVE</label>
                         <input type="checkbox" id="newDishActive" name="newDishActive" value="true">
                     </div>
-                    <input type="submit" value="ADD DISH">
+                    <div class="centerAlign"><input type="submit" value="ADD DISH"></div>
                 </form>
             </section>
             <section>
-                <h3>UPDATE CURRENT MENUS</h3>
-                <form>
-                    <button formaction="/admin-menu-items" formmethod="get">EDIT MENU ITEMS</button>
+                <h3 class="centerAlign">UPDATE CURRENT MENUS</h3>
+                <form class="centerAlign">
+                    <button class="wideBtn" formaction="/admin-menu-items" formmethod="get">EDIT MENU ITEMS</button>
                 </form>
             </section>
         <div>

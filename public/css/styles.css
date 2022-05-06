@@ -117,6 +117,12 @@ footer {
     margin:0 5%;
 }
 
+.centerAlign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Styling for Menu Page */
 
 #menu-content {
@@ -188,7 +194,7 @@ footer {
 
 /* Styling for Admin Page */
 
-.adminPage button {
+.addBtn {
     width: 8%;
     padding: 1%;
     background-color: var(--nav-footer-color);
@@ -216,6 +222,10 @@ footer {
 .pairing {
     display: flex;
     margin: 3%;
+}
+
+.price-select {
+    margin-right: 50%;
 }
 
 .pairing label {
@@ -257,13 +267,31 @@ input[type=submit] {
     width: 20%;
     padding: 1%;
     color: var(--main-content-color);
+    margin: 5% auto;
+}
+
+.wideBtn {
+    background-color: var(--nav-footer-color);
+    border-radius: 0.5rem;
+    width: 40%;
+    padding: 1%;
+    color: var(--main-content-color);
     margin: 0 40%;
+}
+
+.logoutBtn{
+    background-color: var(--nav-footer-color);
+    border-radius: 0.5rem;
+    width: 20%;
+    padding: 1%;
+    color: var(--main-content-color);
+    text-decoration: none;
 }
 
 /* Admin menu editing pages */
 
 .anchorBtn {
-    width: 10%;
+    width: auto;
     padding: 1%;
     background-color: var(--nav-footer-color);
     margin: 5%;
@@ -279,4 +307,19 @@ input[type=submit] {
     margin: 2%;
     border-radius: 0.5rem;
     color: var(--main-content-color);
+}
+
+.adminMenuPage p {
+    line-height: 250%;
+}
+
+.adminMenuPage .pairing {
+    border: solid 1px var(--nav-footer-color);
+    padding: 0 5%;
+    border-radius: 0.5rem;
+}
+
+/* media queries for mobile view */
+@media screen and (max-width: 425px) {
+
 }

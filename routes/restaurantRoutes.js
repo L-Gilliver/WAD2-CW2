@@ -14,7 +14,7 @@ router.get('/dinner-menu', controller.activeDinnerMenu);  //show_dinner_menu);
 router.get('/regional-menu', controller.activeRegionalMenu);   //show_regional_menu);
 router.get('/admin', controller.show_login_page);
 router.post('/admin', login, controller.handle_login);
-
+router.post('admin-main', verify, controller.addNewMenuDish);
 router.get('/admin-menu-items', verify, controller.displayAllMenuItems);
 router.get('/admin-menu-items/:id', verify, controller.displayMenuItem);
 router.post('/updateDish/:id', verify, controller.updateMenuDish);

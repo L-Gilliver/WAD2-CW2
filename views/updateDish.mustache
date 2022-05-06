@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../public/css/styles.css">
+        <link rel="stylesheet" href="../css/styles.css">
         <title>West Coast Restaurant</title>
     </header>
     <body>
@@ -33,7 +33,7 @@
     <main>
         <div id="adminContent">
             {{#user}}
-                <a id="logout" href="/logout" class="btn btn-primary">
+                <a id="logout" href="/logout" class="logoutBtn">
                     Sign out
                 </a>
             {{/user}}
@@ -51,9 +51,11 @@
                     </div>
                     <div class="pairing">
                         <label for="newDishIngr">INGREDIENTS</label>
-                        <p>{{ingredients}}</p>
                         <input type="text" id="dishIngr" name="newDishIngr" required><br>
                         <button type="button" id="newDishIngrAdd" class="addBtn" name="newDishIngrAdd">ADD</button><br>
+                    </div>
+                    <div class="pairing">
+                        <p>CURRENT INGREDIENTS: {{ingredients}}</p>
                     </div>
                     <div class="pairing">
                         <label for="newDishAllergens">ALLERGENS</label>
@@ -67,13 +69,17 @@
                             <option value="Peanuts">Peanuts</option>
                             <option value="Tree Nuts">Tree Nuts</option>
                         </select>
-                        <p>{{allergens}}</p>
                         <button type="button" id="newDishAllergenAdd" class="addBtn" name="newDishAllergenAdd">ADD</button><br>
                     </div>
-                    <p>CURRENT PRICE: {{price}}
+                    <div class="pairing">
+                        <p>CURRENT ALLERGENS: {{allergens}}</p>
+                    </div>
+                    <div class="pairing">
+                        <p>CURRENT PRICE: {{price}}
+                    </div>
                     <div class="pairing">
                         <label for="dishPrice" id="price">PRICE</label>
-                        <div id="price-section">
+                        <div class="price-select">
                             <p>£
                             <select id="dishPrice" required>
                                 <option value="1.00">1.00</option>
@@ -116,6 +122,7 @@
                                 <option value="19.50">19.50</option>
                                 <option value="20.00">20.00</option>
                                 <option value="20.50">20.50</option>
+                            </select>
                             </p>
                         </div>
                     </div>
@@ -126,6 +133,8 @@
                             <option>Lunch</option>
                             <option>Regional</option>
                         </select>
+                    </div>
+                    <div class="pairing">
                         <p>CURRENT MENU: {{menu}}</p>
                     </div>
                     <div class="pairing">
@@ -135,6 +144,8 @@
                             <option>Dinner</option>
                             <option>Dessert</option>
                         </select>
+                    </div>
+                    <div class="pairing">
                         <p>CURRENT COURSE: {{course}}</p>
                     </div>
                     <div class="pairing">
@@ -144,10 +155,12 @@
                     <div class="pairing">
                         <label for="newDishActive">ACTIVE</label>
                         <input type="checkbox" id="dishActive" name="newDishActive" value="{{active}}">
+                    </div >
+                    <div class="flex-row">
+                        <input type="submit" formaction="/updateDish/{{_id}}" formmethod="post" value="UPDATE">
+                        <input type="submit" formaction="/deleteDish/{{_id}}" formmethod="post" value="DELETE">
+                        <input type="submit" formaction="/admin" formmethod="post" value="BACK">
                     </div>
-                    <input type="submit" formaction="/updateDish/{{_id}}" formmethod="post" value="UPDATE">
-                    <input type="submit" formaction="/deleteDish/{{_id}}" formmethod="post" value="DELETE">
-                    <input type="submit" formaction="/admin" formmethod="post" value="BACK">
                 {{/dish}}
                 </form>
             </section>
