@@ -117,8 +117,8 @@ class Menus {
             ingredients: ['Butter', 'Biscuits', 'Sugar', 'Cream Cheese', 'Vanilla', 'Eggs'],
             allergens: ['Eggs', 'Dairy'],
             price: '6.00',
-            menu: 'dessert',
-            course: 'main',
+            menu: 'dinner',
+            course: 'dessert',
             chefSpecial: 'false',
             active: 'true'
         });
