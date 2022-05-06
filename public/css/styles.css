@@ -201,6 +201,7 @@ footer {
     border: none;
     border-radius: 0.5rem;
     color: var(--main-bg-color);
+    margin-left: 5%;
 }
 
 .actionBox {
@@ -255,10 +256,6 @@ footer {
 
 #newDishPrice1, #newDishPrice2 {
     padding: 5% 0;
-}
-
-.addBtn {
-margin-left: 5%;
 }
 
 input[type=submit] {
@@ -321,5 +318,174 @@ input[type=submit] {
 
 /* media queries for mobile view */
 @media screen and (max-width: 425px) {
-
+    nav {
+        padding: 1%;
+        width: 60%;
+        margin-left: 5%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    nav a {
+        text-decoration: none;
+        color: var(--header-color);
+        margin-left: 2%;
+        font-size: 60%;
+    }
+    .about-info {
+        background-color: var(--main-content-color);
+        margin: 5% 10%;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    #about-img {
+        width: 70%;
+        max-height: 80%;
+        margin-right: 2%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        float: right;
+        padding: auto;
+    }
+    .menu-info {
+        background-color: var(--main-content-color);
+        margin: 5% 10%;
+        display: flex;
+        flex-direction: column;
+    }
+    .menu-anchor {
+        width: 25%;
+        margin: 5% auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu-anchor img {
+        width: 200%;
+        height: auto;
+    }
+    #aboutPage button {
+        width: 8rem;
+        padding: 10% 4%;
+        margin: 0;
+        font-weight: bold;
+        background-color: var(--button-color);
+        border: none;
+        border-radius: 10px;
+    }
+    footer {
+        color: var(--header-color);
+    }
+    .footer-section {
+        max-width: 100%;
+        margin:0 5%;
+        display: flex;
+        flex-direction: column;
+    }
+    #specials {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--button-color);
+        width: 90%;
+        margin: auto;
+        border-radius: 1rem;
+        padding: 1%;
+    }
+    #menu-content p {
+        font-size: 80%;
+        line-height: 0;
+        line-height: 200%;
+        max-width: 80%;
+        display: flex;
+    }
+    #loginPage .pairing {
+        display: flex;
+        flex-direction: column;
+    }
+    #loginPage label {
+        width: auto;
+        margin: 0 auto;
+    }
+    #loginPage input[type=text] {
+        width: 50%;
+        margin: 0 auto;
+    }
+    #loginPage input[type=password] {
+        width: 50%;
+        padding: 1%;
+        margin: 0 auto;
+    }
+    #loginPage button {
+        width: 30%;
+        padding: 3%;
+        background-color: var(--nav-footer-color);
+        border: none;
+        border-radius: 0.5rem;
+        color: var(--main-bg-color);
+        margin: 3% 35%;
+    }
+    #loginPage h2 {
+        margin: 5% 35%;
+    }
+    .adminPage .pairing{
+        display: flex;
+        flex-direction: column;
+    }
+    .adminPage label {
+        width: auto;
+    }
+    .addBtn {
+        width: 30%;
+        padding: 3%;
+        background-color: var(--nav-footer-color);
+        border: none;
+        border-radius: 0.5rem;
+        color: var(--main-bg-color);
+    }
+    .adminPage input[type=text] {
+        width: 90%;
+        padding: 1%;
+    }
+    #newDishAllergens, #newDishMenu, #newDishCourse {
+        width: 50%;
+        padding: 1%;
+    }
+    input[type=submit] {
+        background-color: var(--nav-footer-color);
+        border-radius: 0.5rem;
+        width: 50%;
+        padding: 3%;
+        color: var(--main-content-color);
+        margin: 5% auto;
+    }
+    .wideBtn {
+        background-color: var(--nav-footer-color);
+        border-radius: 0.5rem;
+        width: 80%;
+        padding: 3%;
+        color: var(--main-content-color);
+        margin: 5% auto;
+    }
+    .adminMenuPage .pairing{
+        display: flex;
+        flex-direction: column;
+    }
+    .anchorBtn {
+        width: 70%;
+        padding: 3% 20%;
+        background-color: var(--nav-footer-color);
+        margin: 5%;
+        border-radius: 0.5rem;
+        color: var(--main-content-color);
+        text-decoration: none;
+    }
+    #updateDishPage .pairing{
+        display: flex;
+        flex-direction: column;
+    }
+    #updateDishPage p {
+        line-height: 250%;
+        display: flex;
+        overflow-wrap: break-word;
+    }
 }
