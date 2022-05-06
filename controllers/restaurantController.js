@@ -246,55 +246,162 @@ exports.editRegionalMenu = async function (req, res) {
     });
 };
 
-exports.AddToLunchMenu = async function (req, res) {
-  const name = req.body.dishName;
-  const active = true;
-  db.updateLunchMenu(name, active);
-  res.render("admin", {
-    user: "user",
+//////////////
+exports.updateLunchMenu = async function (req, res) {
+  const id = req.params.id;
+  db.getDish(id)
+  .then((dish) => {
+    res.render("updateDish", {
+        user: "user",
+        dish: dish,
+    });
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
   });
-}
-exports.AddToDinnerMenu = async function (req, res) {
-  const name = req.body.dishName;
-  const active = true;
-  db.updateDinnerMenu(name, active);
-  res.render("admin", {
-    user: "user",
+};
+exports.updateDinnerMenu = async function (req, res) {
+  const id = req.params.id;
+  db.getDish(id)
+  .then((dish) => {
+    res.render("updateDish", {
+        user: "user",
+        dish: dish,
+    });
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
   });
-}
-exports.AddToRegionalMenu = async function (req, res) {
-  const name = req.body.dishName;
-  const active = true;
-  db.updateRegionalMenu(name, active);
-  res.render("admin", {
-    user: "user",
+};
+exports.updateRegionalMenu = async function (req, res) {
+  const id = req.params.id;
+  db.getDish(id)
+  .then((dish) => {
+    res.render("updateDish", {
+        user: "user",
+        dish: dish,
+    });
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
   });
-}
+};
 
-exports.removeFromLunchMenu = async function (req, res) {
-  const name = req.body.dishName;
-  const active = false;
-  db.updateLunchMenu(name, active);
-  res.render("admin", {
-    user: "user",
+/* Functions for updating a menu item */
+exports.updateLunchMenuDish = async function (req, res) {
+  const id = req.params.id;
+  const name = req.params.name;
+  const description = req.body.description;
+  const ingredients = req.body.ingredients;
+  const allergens = req.body.allergens;
+  const price = req.body.price;
+  const menu = req.body.menu;
+  const course = req.body.course;
+  const chefSpecial = req.body.chefSpecial;
+  const active = req.body.active;
+  db.updateDish(id, name, description, ingredients, allergens, price, menu, course, chefSpecial, active)
+  .then(() => {
+    res.render("admin", {
+        user: "user",
+    });
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
   });
-}
-exports.removeFromDinnerMenu = async function (req, res) {
-  const name = req.body.dishName;
-  const active = false;
-  db.updateDinnerMenu(name, active);
-  res.render("admin", {
-    user: "user",
+};
+
+exports.updateDinnerMenuDish = async function (req, res) {
+  const id = req.params.id;
+  const name = req.params.name;
+  const description = req.body.description;
+  const ingredients = req.body.ingredients;
+  const allergens = req.body.allergens;
+  const price = req.body.price;
+  const menu = req.body.menu;
+  const course = req.body.course;
+  const chefSpecial = req.body.chefSpecial;
+  const active = req.body.active;
+  db.updateDish(id, name, description, ingredients, allergens, price, menu, course, chefSpecial, active)
+  .then(() => {
+    res.render("admin", {
+        user: "user",
+    });
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
   });
-}
-exports.removeFromRegionalMenu = async function (req, res) {
-  const name = req.body.dishName;
-  const active = false;
-  db.updateRegionalMenu(name, active);
-  res.render("admin", {
-    user: "user",
+};
+
+exports.updateRegionalMenuDish = async function (req, res) {
+  const id = req.params.id;
+  const name = req.params.name;
+  const description = req.body.description;
+  const ingredients = req.body.ingredients;
+  const allergens = req.body.allergens;
+  const price = req.body.price;
+  const menu = req.body.menu;
+  const course = req.body.course;
+  const chefSpecial = req.body.chefSpecial;
+  const active = req.body.active;
+  db.updateDish(id, name, description, ingredients, allergens, price, menu, course, chefSpecial, active)
+  .then(() => {
+    res.render("admin", {
+        user: "user",
+    });
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
   });
-}
+};
+
+/* Functions for deleting a menu item */
+exports.deleteLunchMenuDish = async function (req, res) {
+  const id = req.params.id;
+  db.deleteDish(id)
+  .then(() => {
+    res.render("admin", {
+        user: "user",
+    });
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
+  });
+};
+
+exports.deleteDinnerMenuDish = async function (req, res) {
+  const id = req.params.id;
+  db.deleteDish(id)
+  .then(() => {
+    res.render("admin", {
+        user: "user",
+    });
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
+  });
+};
+
+exports.deleteRegionalMenuDish = async function (req, res) {
+  const id = req.params.id;
+  db.deleteDish(id)
+  .then(() => {
+    res.render("admin", {
+        user: "user",
+    });
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
+  });
+};
 
 exports.logout = function (req, res) {
   res.clearCookie("jwt").status(200).redirect("/");

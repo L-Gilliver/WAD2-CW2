@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
+        <title>West Coast Restaurant</title>
+    </header>
+    <body>
+    <main>
+        <div id="adminContent">
+            {{#user}}
+                <a id="logout" href="/logout" class="btn btn-primary">
+                    Sign out
+                </a>
+            {{/user}}
+            <section class="actionBox">
+                <h3>UPDATE MENU ITEM</h3>
+                <form>
+                    <div class="pairing">
+                        <label for="newDishName">NAME</label>
+                        <input type="text" id="newDishName" name="newDishName" value="{{name}}" required><br>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishDesc">DESCRIPTION</label>
+                        <input type="text" id="newDishDesc" name="newDishDesc" value="{{description}}" required><br>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishIngr">INGREDIENTS</label>
+                        <p>{{ingredients}}</p>
+                        <input type="text" id="newDishIngr" name="newDishIngr" required><br>
+                        <button type="button" id="newDishIngrAdd" class="addBtn" name="newDishIngrAdd">ADD</button><br>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishAllergens">ALLERGENS</label>
+                        <select name="newDishAllergens" id="newDishAllergens" required>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Gluten">Gluten</option>
+                            <option value="Fish">Fish</option>
+                            <option value="Shellfsh">Shellfish</option>
+                            <option value="Soy">Soy</option>
+                            <option value="Eggs">Eggs</option>
+                            <option value="Peanuts">Peanuts</option>
+                            <option value="Tree Nuts">Tree Nuts</option>
+                        </select>
+                        <p>{{allergens}}</p>
+                        <button type="button" id="newDishAllergenAdd" class="addBtn" name="newDishAllergenAdd">ADD</button><br>
+                    </div>
+                    <p>CURRENT PRICE: {{price}}
+                    <div class="pairing">
+                        <label for="newDishPrice" id="price">PRICE</label>
+                        <div id="price-section">
+                            <p>£
+                            <select id="newDishPrice1" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                            </select>
+                            <span>.</span>
+                            <select id="newDishPrice2" required>
+                                <option value="00">00</option>
+                                <option value="50">50</option>
+                            </select>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishMenu">ASSIGN MENU</label>
+                        <select id="newDishMenu" required>
+                            <option>Dinner</option>
+                            <option>Lunch</option>
+                            <option>Regional</option>
+                        </select>
+                        <p>CURRENT MENU: {{menu}}</p>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishCourse">ASSIGN COURSE</label>
+                        <select id="newDishCourse" required>
+                            <option>Starter</option>
+                            <option>Dinner</option>
+                            <option>Dessert</option>
+                        </select>
+                        <p>CURRENT COURSE: {{menu}}</p>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishSpecials">CHEF SPECIAL</label>
+                        <input type="checkbox" id="newDishSpecials" name="newDishSpecials" value="{{chefSpecial}}" required>
+                    </div>
+                    <div class="pairing">
+                        <label for="newDishActive">ACTIVE</label>
+                        <input type="checkbox" id="newDishActive" name="newDishActive" value="{{active}}" required>
+                    </div>
+                    <input type="submit" formaction="/updateLunchDish/{{_id}}" formmethod="post" value="UPDATE">
+                    <input type="submit" formaction="/deleteLunchDish/{{_id}}" formmethod="post" value="DELETE">
+                    <input type="submit" formaction="/admin" formmethod="get" value="BACK">
+                </form>
+            </section>
+        <div>
+    </main>
+    <footer class="page-end" id="contact-anchor">
+            <div class="footer-section">
+                <h4>Restaurant Address</h4>
+                <p>123 St Vincent Street<br>Glasgow<br>G2 5TS</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>0123 456 7890<br>westcoast@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow us on social media</h4>
+                <img src="./imgs/social-media-icons.png" alt="facebook twitter, instagram icons">
+            </div>
+        </footer>
+    </body>
+</html>

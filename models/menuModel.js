@@ -550,33 +550,40 @@ class Menus {
         })
     }
 
-    updateLunchMenu(name, active) {
-        this.db.update({ name: name }, { $set: { active: active } }, function (err, doc) {
+    //get desserts for regional menu
+    getDish(id) {
+        return new Promise((resolve, reject) => {
+            this.db.find({ _id: id }, function (err, dish) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(dish);
+                    console.log('getDish() returns: ', dish);
+                }
+            })
+        })
+    }
+
+    //update menu item
+    updateDish(id, name, description, ingredients, allergens, price, menu, course, chefSpecial, active) {
+        this.db.update({ id }, { $set: { name, description, ingredients, allergens, price, menu, course, chefSpecial, active } }, {}, function (err, dish) {//possibly need to change to name: name etc...
             if (err) {
-                console.log("error updating lunch menu!", subject);
-            }
-            else {
-                console.log("Lunch menu updated!", doc);
+                reject(err);
+            } else {
+                resolve(dish);
+                console.log('updateDish() returns: ', dish);
             }
         })
     }
-    updateDinnerMenu(name, active) {
-        this.db.update({ name: name, active: active }, { $set: { active: active } }, {}, function (err, doc) {
+
+    //delete menu item
+    deleteDish(id) {
+        this.db.remove({ id }, {}, function (err, dish) {
             if (err) {
-                console.log("error updating dinner menu!", subject);
-            }
-            else {
-                console.log("Dinner menu updated!", doc);
-            }
-        })
-    }
-    updateRegionalMenu(name, active) {
-        this.db.update({ name: name }, { $set: { active: active } }, function (err, doc) {
-            if (err) {
-                console.log("error updating regional menu!", subject);
-            }
-            else {
-                console.log("Regional menu updated!", doc);
+                reject(err);
+            } else {
+                resolve(dish);
+                console.log('deleteDish() returns: ', dish);
             }
         })
     }
