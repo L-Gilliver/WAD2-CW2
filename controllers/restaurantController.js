@@ -133,14 +133,23 @@ exports.handle_login = function (req, res) {
 };
 
 
-exports.editLunchMenu = async function (req, res) {
+exports.displayAllMenuItems = async function (req, res) {
 
   let lunchSpecialStarter;
   let lunchSpecialMain;
   let lunchStarters;
   let lunchMains;
   let lunchDesserts;
-
+  let dinnerSpecialStarter;
+  let dinnerSpecialMain;
+  let dinnerStarters;
+  let dinnerMains;
+  let dinnerDesserts;
+  let regionalStarters;
+  let regionalMains;
+  let regionalDesserts;
+  console.log("testing for error 1");
+  //chain promises get all lunch/dinner/regional dishes disregarding active status
   db.getAllLunchSpecialStarter()
     .then((list) => {
       console.log("All dishes promise 1 resolved", list)
@@ -161,13 +170,53 @@ exports.editLunchMenu = async function (req, res) {
     })).then((list => {
       console.log("All dishes promise 5 resolved", list)
       lunchDesserts = list;
-      res.render("admin-lunch-menu", {
-        user: 'user',
+      return db.getAllDinnerSpecialStarter();
+    })).then((list) => {
+      console.log("All dishes promise 6 resolved", list)
+      dinnerSpecialStarter = list;
+      return db.getAllDinnerSpecialMain();
+    }).then((list => {
+      console.log("All dishes promise 7 resolved", list)
+      dinnerSpecialMain = list;
+      return db.getAllDinnerStarters();
+    })).then((list => {
+      console.log("All dishes promise 8 resolved", list)
+      dinnerStarters = list;
+      return db.getAllDinnerMains();
+    })).then((list => {
+      console.log("All dishes promise 9 resolved", list)
+      dinnerMains = list;
+      return db.getAllDinnerDesserts();
+    })).then((list => {
+      console.log("All dishes promise 10 resolved", list)
+      dinnerDesserts = list;
+      return db.getAllRegionalStarters();
+    })).then((list => {
+      console.log("All dishes promise 11 resolved", list)
+      regionalStarters = list;
+      return db.getAllRegionalMains();
+    })).then((list => {
+      console.log("All dishes promise 12 resolved", list)
+      regionalMains = list;
+      return db.getAllRegionalDesserts();
+    })).then((list => {
+      console.log("All dishes promise 13 resolved", list)
+      regionalDesserts = list;
+      res.render("admin-menu-items", {
+        user: "user",
         lunchSpecialStarter: lunchSpecialStarter,
         lunchSpecialMain: lunchSpecialMain,
         lunchStarters: lunchStarters,
         lunchMains: lunchMains,
         lunchDesserts: lunchDesserts,
+        dinnerSpecialStarter: dinnerSpecialStarter,
+        dinnerSpecialMain: dinnerSpecialMain,
+        dinnerStarters: dinnerStarters,
+        dinnerMains: dinnerMains,
+        dinnerDesserts: dinnerDesserts,
+        regionalStarters: regionalStarters,
+        regionalMains: regionalMains,
+        regionalDesserts: regionalDesserts,
       });
     }))
     .catch((err) => {
@@ -223,183 +272,69 @@ exports.editRegionalMenu = async function (req, res) {
 
   db.getAllRegionalStarters()
     .then((list => {
-    console.log("All dishes promise 11 resolved", list)
-    regionalStarters = list;
-    return db.getAllRegionalMains();
-  })).then((list => {
-    console.log("All dishes promise 12 resolved", list)
-    regionalMains = list;
-    return db.getAllRegionalDesserts();
-  })).then((list => {
-    console.log("All dishes promise 13 resolved", list)
-    regionalDesserts = list;
-    console.log("error testing 123");
-    res.render("admin-regional-menu", {
-      user: 'user',
-      regionalStarters: regionalStarters,
-      regionalMains: regionalMains,
-      regionalDesserts: regionalDesserts,
-    });
-  }))
+      console.log("All dishes promise 11 resolved", list)
+      regionalStarters = list;
+      return db.getAllRegionalMains();
+    })).then((list => {
+      console.log("All dishes promise 12 resolved", list)
+      regionalMains = list;
+      return db.getAllRegionalDesserts();
+    })).then((list => {
+      console.log("All dishes promise 13 resolved", list)
+      regionalDesserts = list;
+      console.log("error testing 123");
+      res.render("admin-regional-menu", {
+        user: 'user',
+        regionalStarters: regionalStarters,
+        regionalMains: regionalMains,
+        regionalDesserts: regionalDesserts,
+      });
+    }))
     .catch((err) => {
       console.log("promise rejected", err);
     });
 };
 
 //////////////
-exports.updateLunchMenu = async function (req, res) {
+exports.displayMenuItem = async function (req, res) {
   const id = req.params.id;
   db.getDish(id)
-  .then((dish) => {
-    res.render("updateDish", {
+    .then((dish) => {
+      res.render("updateDish", {
         user: "user",
         dish: dish,
+      });
+    })
+    .catch((err) => {
+      console.log("Error: ");
+      console.log(JSON.stringify(err));
     });
-  })
-  .catch((err) => {
-    console.log("Error: ");
-    console.log(JSON.stringify(err));
-  });
-};
-exports.updateDinnerMenu = async function (req, res) {
-  const id = req.params.id;
-  db.getDish(id)
-  .then((dish) => {
-    res.render("updateDish", {
-        user: "user",
-        dish: dish,
-    });
-  })
-  .catch((err) => {
-    console.log("Error: ");
-    console.log(JSON.stringify(err));
-  });
-};
-exports.updateRegionalMenu = async function (req, res) {
-  const id = req.params.id;
-  db.getDish(id)
-  .then((dish) => {
-    res.render("updateDish", {
-        user: "user",
-        dish: dish,
-    });
-  })
-  .catch((err) => {
-    console.log("Error: ");
-    console.log(JSON.stringify(err));
-  });
 };
 
 /* Functions for updating a menu item */
-exports.updateLunchMenuDish = async function (req, res) {
+exports.updateMenuDish = async function (req, res) {
   const id = req.params.id;
-  const name = req.params.name;
-  const description = req.body.description;
-  const ingredients = req.body.ingredients;
-  const allergens = req.body.allergens;
-  const price = req.body.price;
-  const menu = req.body.menu;
-  const course = req.body.course;
-  const chefSpecial = req.body.chefSpecial;
-  const active = req.body.active;
+  const name = req.params.dishName;
+  const description = req.body.dishDesc;
+  const ingredients = req.body.dishIngr;
+  const allergens = req.body.dishAllergens;
+  const price = req.body.dishPrice;
+  const menu = req.body.dishMenu;
+  const course = req.body.dishCourse;
+  const chefSpecial = req.body.dishSpecials;
+  const active = req.body.dishActive;
   db.updateDish(id, name, description, ingredients, allergens, price, menu, course, chefSpecial, active)
-  .then(() => {
-    res.render("admin", {
-        user: "user",
-    });
-  })
-  .catch((err) => {
-    console.log("Error: ");
-    console.log(JSON.stringify(err));
-  });
-};
-
-exports.updateDinnerMenuDish = async function (req, res) {
-  const id = req.params.id;
-  const name = req.params.name;
-  const description = req.body.description;
-  const ingredients = req.body.ingredients;
-  const allergens = req.body.allergens;
-  const price = req.body.price;
-  const menu = req.body.menu;
-  const course = req.body.course;
-  const chefSpecial = req.body.chefSpecial;
-  const active = req.body.active;
-  db.updateDish(id, name, description, ingredients, allergens, price, menu, course, chefSpecial, active)
-  .then(() => {
-    res.render("admin", {
-        user: "user",
-    });
-  })
-  .catch((err) => {
-    console.log("Error: ");
-    console.log(JSON.stringify(err));
-  });
-};
-
-exports.updateRegionalMenuDish = async function (req, res) {
-  const id = req.params.id;
-  const name = req.params.name;
-  const description = req.body.description;
-  const ingredients = req.body.ingredients;
-  const allergens = req.body.allergens;
-  const price = req.body.price;
-  const menu = req.body.menu;
-  const course = req.body.course;
-  const chefSpecial = req.body.chefSpecial;
-  const active = req.body.active;
-  db.updateDish(id, name, description, ingredients, allergens, price, menu, course, chefSpecial, active)
-  .then(() => {
-    res.render("admin", {
-        user: "user",
-    });
-  })
-  .catch((err) => {
-    console.log("Error: ");
-    console.log(JSON.stringify(err));
+  res.render("admin", {
+    user: "user",
   });
 };
 
 /* Functions for deleting a menu item */
-exports.deleteLunchMenuDish = async function (req, res) {
+exports.deleteMenuDish = async function (req, res) {
   const id = req.params.id;
   db.deleteDish(id)
-  .then(() => {
-    res.render("admin", {
-        user: "user",
-    });
-  })
-  .catch((err) => {
-    console.log("Error: ");
-    console.log(JSON.stringify(err));
-  });
-};
-
-exports.deleteDinnerMenuDish = async function (req, res) {
-  const id = req.params.id;
-  db.deleteDish(id)
-  .then(() => {
-    res.render("admin", {
-        user: "user",
-    });
-  })
-  .catch((err) => {
-    console.log("Error: ");
-    console.log(JSON.stringify(err));
-  });
-};
-
-exports.deleteRegionalMenuDish = async function (req, res) {
-  const id = req.params.id;
-  db.deleteDish(id)
-  .then(() => {
-    res.render("admin", {
-        user: "user",
-    });
-  })
-  .catch((err) => {
-    console.log("Error: ");
-    console.log(JSON.stringify(err));
+  res.render("admin", {
+    user: "user",
   });
 };
 

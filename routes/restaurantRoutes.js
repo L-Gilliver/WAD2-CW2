@@ -15,20 +15,10 @@ router.get('/regional-menu', controller.activeRegionalMenu);   //show_regional_m
 router.get('/admin', controller.show_login_page);
 router.post('/admin', login, controller.handle_login);
 
-router.get('/admin-lunch-menu', verify, controller.editLunchMenu);
-router.get('/admin-lunch-menu/:id', verify, controller.updateLunchMenu);
-router.get('/updateLunchDish/:id', verify, controller.updateLunchMenuDish);
-router.get('/deleteLunchDish/:id', verify, controller.deleteLunchMenuDish);
-
-router.get('/admin-dinner-menu', verify, controller.editDinnerMenu);
-router.get('/admin-dinner-menu/:id', verify, controller.updateDinnerMenu);
-router.get('/updateDinnerDish/:id', verify, controller.updateDinnerMenuDish);
-router.get('/deleteDinnerDish/:id', verify, controller.deleteDinnerMenuDish);
-
-router.get('/admin-regional-menu', verify, controller.editRegionalMenu);
-router.get('/admin-regional-menu/:id', verify, controller.updateRegionalMenu);
-router.get('/updateRegionalDish/:id', verify, controller.updateRegionalMenuDish);
-router.get('/deleteRegionalDish/:id', verify, controller.deleteRegionalMenuDish);
+router.get('/admin-menu-items', verify, controller.displayAllMenuItems);
+router.get('/admin-menu-items/:id', verify, controller.displayMenuItem);
+router.post('/updateDish/:id', verify, controller.updateMenuDish);
+router.post('/deleteDish/:id', verify, controller.deleteMenuDish);
 
 router.get("/logout", controller.logout);
 

@@ -4,10 +4,32 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="../public/css/styles.css">
         <title>West Coast Restaurant</title>
     </header>
     <body>
+        <div class="page-end">
+            <header>
+                West Coast
+            </header>
+            <nav>
+                <a href="/">
+                    About Us
+                </a>
+                <a href="/lunch-menu">
+                    Lunch Menu
+                </a>
+                <a href="/dinner-menu">
+                    Dinner Menu
+                </a>
+                <a href="/regional-menu">
+                    Regional Menu
+                </a>
+                <a href="#contact-anchor">
+                    Get In Touch
+                </a>
+            </nav>
+        </div>
     <main>
         <div id="adminContent">
             {{#user}}
@@ -18,23 +40,24 @@
             <section class="actionBox">
                 <h3>UPDATE MENU ITEM</h3>
                 <form>
+                {{#dish}}
                     <div class="pairing">
-                        <label for="newDishName">NAME</label>
+                        <label for="dishName">NAME</label>
                         <input type="text" id="newDishName" name="newDishName" value="{{name}}" required><br>
                     </div>
                     <div class="pairing">
-                        <label for="newDishDesc">DESCRIPTION</label>
+                        <label for="dishDesc">DESCRIPTION</label>
                         <input type="text" id="newDishDesc" name="newDishDesc" value="{{description}}" required><br>
                     </div>
                     <div class="pairing">
                         <label for="newDishIngr">INGREDIENTS</label>
                         <p>{{ingredients}}</p>
-                        <input type="text" id="newDishIngr" name="newDishIngr" required><br>
+                        <input type="text" id="dishIngr" name="newDishIngr" required><br>
                         <button type="button" id="newDishIngrAdd" class="addBtn" name="newDishIngrAdd">ADD</button><br>
                     </div>
                     <div class="pairing">
                         <label for="newDishAllergens">ALLERGENS</label>
-                        <select name="newDishAllergens" id="newDishAllergens" required>
+                        <select name="dishAllergens" id="newDishAllergens" required>
                             <option value="Dairy">Dairy</option>
                             <option value="Gluten">Gluten</option>
                             <option value="Fish">Fish</option>
@@ -49,42 +72,56 @@
                     </div>
                     <p>CURRENT PRICE: {{price}}
                     <div class="pairing">
-                        <label for="newDishPrice" id="price">PRICE</label>
+                        <label for="dishPrice" id="price">PRICE</label>
                         <div id="price-section">
                             <p>£
-                            <select id="newDishPrice1" required>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                            </select>
-                            <span>.</span>
-                            <select id="newDishPrice2" required>
-                                <option value="00">00</option>
-                                <option value="50">50</option>
-                            </select>
+                            <select id="dishPrice" required>
+                                <option value="1.00">1.00</option>
+                                <option value="1.50">1.50</option>
+                                <option value="2.00">2.00</option>
+                                <option value="2.50">2.50</option>
+                                <option value="3.00">3.00</option>
+                                <option value="3.50">3.50</option>
+                                <option value="4.00">4.00</option>
+                                <option value="4.50">4.50</option>
+                                <option value="5.00">5.00</option>
+                                <option value="5.50">5.50</option>
+                                <option value="6.00">6.00</option>
+                                <option value="6.50">6.50</option>
+                                <option value="7.00">7.00</option>
+                                <option value="7.50">7.50</option>
+                                <option value="8.00">8.00</option>
+                                <option value="8.50">8.50</option>
+                                <option value="9.00">9.00</option>
+                                <option value="9.50">9.50</option>
+                                <option value="10.00">10.00</option>
+                                <option value="10.50">10.50</option>
+                                <option value="11.00">11.00</option>
+                                <option value="11.50">11.50</option>
+                                <option value="12.00">12.00</option>
+                                <option value="12.50">12.50</option>
+                                <option value="13.00">13.00</option>
+                                <option value="13.50">13.50</option>
+                                <option value="14.00">14.00</option>
+                                <option value="14.50">14.50</option>
+                                <option value="15.00">15.00</option>
+                                <option value="15.50">15.50</option>
+                                <option value="16.00">16.00</option>
+                                <option value="16.50">16.50</option>
+                                <option value="17.00">17.00</option>
+                                <option value="17.50">17.50</option>
+                                <option value="18.00">18.00</option>
+                                <option value="18.50">18.50</option>
+                                <option value="19.00">19.00</option>
+                                <option value="19.50">19.50</option>
+                                <option value="20.00">20.00</option>
+                                <option value="20.50">20.50</option>
                             </p>
                         </div>
                     </div>
                     <div class="pairing">
                         <label for="newDishMenu">ASSIGN MENU</label>
-                        <select id="newDishMenu" required>
+                        <select id="dishMenu" required>
                             <option>Dinner</option>
                             <option>Lunch</option>
                             <option>Regional</option>
@@ -93,24 +130,25 @@
                     </div>
                     <div class="pairing">
                         <label for="newDishCourse">ASSIGN COURSE</label>
-                        <select id="newDishCourse" required>
+                        <select id="dishCourse" required>
                             <option>Starter</option>
                             <option>Dinner</option>
                             <option>Dessert</option>
                         </select>
-                        <p>CURRENT COURSE: {{menu}}</p>
+                        <p>CURRENT COURSE: {{course}}</p>
                     </div>
                     <div class="pairing">
                         <label for="newDishSpecials">CHEF SPECIAL</label>
-                        <input type="checkbox" id="newDishSpecials" name="newDishSpecials" value="{{chefSpecial}}" required>
+                        <input type="checkbox" id="dishSpecials" name="newDishSpecials" value="{{chefSpecial}}">
                     </div>
                     <div class="pairing">
                         <label for="newDishActive">ACTIVE</label>
-                        <input type="checkbox" id="newDishActive" name="newDishActive" value="{{active}}" required>
+                        <input type="checkbox" id="dishActive" name="newDishActive" value="{{active}}">
                     </div>
-                    <input type="submit" formaction="/updateLunchDish/{{_id}}" formmethod="post" value="UPDATE">
-                    <input type="submit" formaction="/deleteLunchDish/{{_id}}" formmethod="post" value="DELETE">
-                    <input type="submit" formaction="/admin" formmethod="get" value="BACK">
+                    <input type="submit" formaction="/updateDish/{{_id}}" formmethod="post" value="UPDATE">
+                    <input type="submit" formaction="/deleteDish/{{_id}}" formmethod="post" value="DELETE">
+                    <input type="submit" formaction="/admin" formmethod="post" value="BACK">
+                {{/dish}}
                 </form>
             </section>
         <div>

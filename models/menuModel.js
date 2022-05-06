@@ -566,12 +566,11 @@ class Menus {
 
     //update menu item
     updateDish(id, name, description, ingredients, allergens, price, menu, course, chefSpecial, active) {
-        this.db.update({ id }, { $set: { name, description, ingredients, allergens, price, menu, course, chefSpecial, active } }, {}, function (err, dish) {//possibly need to change to name: name etc...
+        this.db.update({ id }, { $set: { name: name , description: description , ingredients: ingredients , allergens: allergens , price: price , menu: menu , course: course, chefSpecial: chefSpecial, active: active } }, {}, function (err, dish) {//possibly need to change to name: name etc...
             if (err) {
-                reject(err);
+                console.log('Error :', err);
             } else {
-                resolve(dish);
-                console.log('updateDish() returns: ', dish);
+                console.log('document updated in the database', dish);
             }
         })
     }
@@ -580,10 +579,9 @@ class Menus {
     deleteDish(id) {
         this.db.remove({ id }, {}, function (err, dish) {
             if (err) {
-                reject(err);
+                console.log('Error :', err);
             } else {
-                resolve(dish);
-                console.log('deleteDish() returns: ', dish);
+                console.log('document deleted from the database', dish);
             }
         })
     }

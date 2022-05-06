@@ -46,11 +46,10 @@ header {
 }
 
 main {
-    
     width: auto;
-    
 }
 
+/* Styling for about page */
 .banner-img {
     margin: 0;
     width: 100%;
@@ -99,9 +98,10 @@ main {
     height: auto;
 }
 
-.menuPage button {
-    width: 90%;
-    padding: 5%;
+#aboutPage button {
+    max-width: 150%;
+    padding: 10% 4%;
+    margin: 0;
     font-weight: bold;
     background-color: var(--button-color);
     border: none;
@@ -154,6 +154,36 @@ footer {
 
 .bold {
     font-weight: bolder;
+}
+
+/* Styling for Login page */
+
+#loginPage h2 {
+    margin: 5% 45%;
+}
+
+#loginPage input[type=text] {
+    width: 50%;
+    padding: 1%;
+}
+
+#loginPage input[type=password] {
+    width: 50%;
+    padding: 1%;
+}
+
+#actionBox {
+    padding: 0 5%;
+}
+
+#loginPage button {
+    width: 20%;
+    padding: 1%;
+    background-color: var(--nav-footer-color);
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--main-bg-color);
+    margin: 1% 40%;
 }
 
 /* Styling for Admin Page */
