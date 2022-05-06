@@ -1,30 +1,103 @@
-       
-       
-        <section>
-            <h3>UPDATE LUNCH MENU</h3>
-            <div>
-                <div class="specialStarters">
-                {{#lunchSpecialStarter}}
-                    <p>{{name}}&nbsp;<span class="recipe">{{active}}</span></p>
-                    <button class="addBtn">Add to Menu</button>
-                    <button class="RemoveBtn">Remove from Menu</button>
-                {{/lunchSpecialStarter}}
-                </div>
-                {{#lunchSpecialMain}}
-                    <input type="checkbox" id="lunchSpecialMain-1" name="lunchSpecialMain-1">
-                    <label for="lunchSpecialMain-1">{{name}}</label><br>
-                {{/lunchSpecialMain}}
-                {{#lunchStarters}}
-                    <input type="checkbox" id="lunchStarters-1" name="lunchStarters-1">
-                    <label for="lunchStarters-1">{{name}}</label><br>
-                {{/lunchStarters}}
-                {{#lunchMains}}
-                    <input type="checkbox" id="lunchMains-1" name="lunchMains-1">
-                    <label for="lunchMains-1">{{name}}</label><br>
-                {{/lunchMains}}
-                {{#lunchDesserts}}
-                    <input type="checkbox" id="lunchDesserts-1" name="lunchDesserts-1">
-                    <label for="lunchDesserts-1">{{name}}</label><br>
-                {{/lunchDesserts}}
-            </div>
-        </section>
+<!DOCTYPE html>
+<html lang="en" class="adminMenuPage">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
+        <title>West Coast Restaurant</title>
+    </head>
+    <body>
+        <div class="page-end">
+            <header>
+                West Coast
+            </header>
+            <nav>
+                <a href="/">
+                    About Us
+                </a>
+                <a href="/lunch-menu">
+                    Lunch Menu
+                </a>
+                <a href="/dinner-menu">
+                    Dinner Menu
+                </a>
+                <a href="/regional-menu">
+                    Regional Menu
+                </a>
+                <a href="#contact-anchor">
+                    Get In Touch
+                </a>
+            </nav>
+        </div>
+    <main>
+        <div id="adminContent">
+        <div>
+            {{#user}}
+                <a id="logout" href="/logout" class="anchorBtn">
+                    Sign out
+                </a>
+                <form>
+                    <button id="back" formaction="/admin" formmethod="post" class="anchorBtn">
+                        Back 
+                    </button>
+                </form>
+            {{/user}} 
+        </div>  
+            <section>
+                    <h2>UPDATE LUNCH MENU</h2>
+                        <div>
+                            {{#lunchSpecialStarter}}
+                            <h3>CHEF SPECIALS STARTERS</h3>
+                                <form class="pairing">
+                                    <p><span class="dishName">{{name}}</span>&nbsp;&nbsp;<span class="recipe" id="status">{{active}}</span></p>
+                                    <button type="submit" class="actionBtn" formaction="/add-to-lunch-menu/{{_id}}" formmethod="post">Add</button>
+                                </form>
+                            {{/lunchSpecialStarter}}
+                            <h3>CHEF SPECIAL MAINS</h3>
+                            {{#lunchSpecialMain}}
+                                <div class="pairing">
+                                    <p><span class="dishName">{{name}}</span></p>
+                                    <button type="submit" class="actionBtn" formaction="/add-to-lunch-menu/{{_id}}" formmethod="post">Add</button>
+                                </div>
+                            {{/lunchSpecialMain}}
+                             <h3>STARTERS</h3>
+                            {{#lunchStarters}}
+                                <div class="pairing">
+                                    <p><span class="dishName">{{name}}</span>&nbsp;&nbsp;<span class="recipe" id="status">{{active}}</span></p>
+                                    <button type="submit" class="actionBtn" formaction="/add-to-lunch-menu/{{_id}}" formmethod="post">Add</button>
+                                </div>
+                            {{/lunchStarters}}
+                            <h3>MAINS</h3>
+                            {{#lunchMains}}
+                                <div class="pairing">
+                                    <p><span class="dishName">{{name}}</span>&nbsp;&nbsp;<span class="recipe" id="status">{{active}}</span></p>
+                                    <button type="submit" class="actionBtn" formaction="/add-to-lunch-menu/{{_id}}" formmethod="post">Add</button>
+                                </div>
+                            {{/lunchMains}}
+                            <h3>DESSERTS</h3>
+                            {{#lunchDesserts}}
+                                <div class="pairing">
+                                    <p><span class="dishName">{{name}}</span>&nbsp;&nbsp;<span class="recipe" id="status">{{active}}</span></p>
+                                    <button type="submit" class="actionBtn" formaction="/add-to-lunch-menu/{{_id}}" formmethod="post">Add</button>
+                                </div>
+                            {{/lunchDesserts}}
+                        </div>
+            </section>
+        </div>
+    </main>
+    <footer class="page-end" id="contact-anchor">
+        <div class="footer-section">
+            <h4>Restaurant Address</h4>
+            <p>123 St Vincent Street<br>Glasgow<br>G2 5TS</p>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>0123 456 7890<br>westcoast@gmail.com</p>
+        </div>
+        <div class="footer-section">
+            <h4>Follow us on social media</h4>
+            <img src="./imgs/social-media-icons.png" alt="facebook twitter, instagram icons">
+        </div>
+    </footer>
+    </body>
