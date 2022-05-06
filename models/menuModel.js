@@ -33,17 +33,6 @@ class Menus {
             active: 'true'
         });
         this.db.insert({
-            name: "Chicken Breast",
-            description: 'Fresh caught Coley served with baby potato and basil salad.',
-            ingredients: ['Coley', 'Potato', 'Parmesan', 'Basil', 'Garlic', 'Salad Leaves', 'Onion', 'Peppers', 'Cucumber'],
-            allergens: [],
-            price: '14.50',
-            menu: 'lunch',
-            course: 'main',
-            chefSpecial: 'false',
-            active: 'true'
-        });
-        this.db.insert({
             name: "Lemon Posset",
             description: 'Flavourful citrus set pudding.',
             ingredients: ['Double Cream', 'Sugar', 'Lemon'],
@@ -66,10 +55,10 @@ class Menus {
             active: 'true'
         });
         this.db.insert({
-            name: "Cod Fritters",
-            description: 'Bite-sized fritters with garlic aioli.',
-            ingredients: ['Cod', 'Potato', 'Parsley', 'Garlic', 'Chives', 'Parsley'],
-            allergens: ['Gluten'],
+            name: "Goats Cheese Salad",
+            description: 'Creamy goats cheese served with salad and toasted croutons.',
+            ingredients: ['Salad Leaves', 'Onion', 'Cucumber', 'Peppers', 'Bread'],
+            allergens: ['Dairy', 'Gluten'],
             price: '7.00',
             menu: 'lunch',
             course: 'main',
@@ -101,33 +90,33 @@ class Menus {
             active: 'true'
         });
         this.db.insert({
-            name: "Venison & Fries",
-            description: 'Scottish Venison steak served with homemade fries and stroganoff sauce.',
-            ingredients: ['Venison', 'Potato', 'Onion', 'Garlic', 'Mushroom', 'Beef stock'],
-            allergens: ['Gluten', 'Dairy'],
-            price: '21.00',
+            name: "Bruscetta",
+            description: 'Delicious toasted bread topped with tomato and onion.',
+            ingredients: ['Bread', 'Tomato', 'Onion', 'Garlic', 'Basil'],
+            allergens: ['Gluten'],
+            price: '5.00',
             menu: 'dinner',
             course: 'starter',
             chefSpecial: 'false',
             active: 'true'
         });
         this.db.insert({
-            name: "Venison & Fries",
-            description: 'Scottish Venison steak served with homemade fries and stroganoff sauce.',
-            ingredients: ['Venison', 'Potato', 'Onion', 'Garlic', 'Mushroom', 'Beef stock'],
-            allergens: ['Gluten', 'Dairy'],
-            price: '21.00',
+            name: "Chicken Breast",
+            description: 'Spiced chicken breast served with rice and peppers.',
+            ingredients: ['Chicken', 'Rice', 'Onion', 'Peppers', 'Garlic', 'Chilli'],
+            allergens: [],
+            price: '14.50',
             menu: 'dinner',
             course: 'main',
             chefSpecial: 'false',
             active: 'true'
         });
         this.db.insert({
-            name: "Venison & Fries",
-            description: 'Scottish Venison steak served with homemade fries and stroganoff sauce.',
-            ingredients: ['Venison', 'Potato', 'Onion', 'Garlic', 'Mushroom', 'Beef stock'],
-            allergens: ['Gluten', 'Dairy'],
-            price: '21.00',
+            name: "Cheesecake",
+            description: 'New York style cheesecake.',
+            ingredients: ['Butter', 'Biscuits', 'Sugar', 'Cream Cheese', 'Vanilla', 'Eggs'],
+            allergens: ['Eggs', 'Dairy'],
+            price: '6.00',
             menu: 'dessert',
             course: 'main',
             chefSpecial: 'false',
@@ -138,10 +127,10 @@ class Menus {
 
         ///////////
         this.db.insert({
-            name: "Mango Sticky Rice",
-            description: 'Mango sticky rice is a traditional Thai dessert.',
-            ingredients: ['Rice', 'Coconut Water', 'Brown Sugar'],
-            allergens: [],
+            name: "Thai Style Skewers",
+            description: 'Peanut flavoured chicken skewers.',
+            ingredients: ['Chicken', 'Soy Sauce', 'Honey', 'Ginger', 'Peanut Butter', 'Chilli'],
+            allergens: ['Peanut'],
             price: '6.00',
             menu: 'regional',
             course: 'starter',
@@ -149,11 +138,11 @@ class Menus {
             active: 'true'
         });
         this.db.insert({
-            name: "Mango Sticky Rice",
-            description: 'Mango sticky rice is a traditional Thai dessert.',
-            ingredients: ['Rice', 'Coconut Water', 'Brown Sugar'],
+            name: "Thai Red Curry",
+            description: 'Our take on the classic thai red curry.',
+            ingredients: ['Rice', 'Coconut', 'Garlic', 'Ginger', 'Onion', 'Butternut Squash', 'Chilli', 'Coriander', 'Red Curry Paste'],
             allergens: [],
-            price: '6.00',
+            price: '12.00',
             menu: 'regional',
             course: 'main',
             chefSpecial: 'false',
